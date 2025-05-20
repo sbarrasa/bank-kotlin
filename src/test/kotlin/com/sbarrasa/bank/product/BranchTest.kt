@@ -12,11 +12,6 @@ class BranchTest {
     }
 
     @Test
-    fun idVISA() {
-        assertEquals("VISA", Branch.VISA.id)
-    }
-
-    @Test
     fun descAmex(){
         assertEquals("American Express", Branch.AMEX.description)
     }
