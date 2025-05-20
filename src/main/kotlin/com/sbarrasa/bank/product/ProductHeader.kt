@@ -1,6 +1,6 @@
 package com.sbarrasa.bank.product
 
-interface ProductHeader {
-    val productType: String
-    val name: String
+import com.sbarrasa.util.id.IdDesc
+
+interface ProductHeader: IdDesc<String> {
 }

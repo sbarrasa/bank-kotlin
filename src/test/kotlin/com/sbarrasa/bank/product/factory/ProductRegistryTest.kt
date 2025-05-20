@@ -51,4 +51,9 @@ class ProductRegistryTest{
     fun createDebitCard() {
         assertDoesNotThrow{ProductRegistry.create<DebitCard>("TD")}
     }
+
+    @Test
+    fun asMap() {
+        println(ProductRegistry.asMap())
+    }
 }

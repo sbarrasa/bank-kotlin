@@ -1,7 +1,15 @@
 package com.sbarrasa.bank.product
 
-enum class Branch(val description: String) {
+import com.sbarrasa.util.id.EnumIdDesc
+import com.sbarrasa.util.id.IdDesc
+
+enum class Branch(override val description: String): IdDesc<String>{
     VISA("VISA"),
     MC("MasterCard"),
-    AMEX("American Express")
+    AMEX("American Express");
+
+    override val id = name
+    companion object : EnumIdDesc<Branch> {
+        override val values = entries
+    }
 }

@@ -9,8 +9,7 @@ object ProductRegistry {
     private val creators = HashMap<String, ProductCreator<out Product>>()
 
     fun <T : Product> register(productRegister: ProductRegister<T>) =
-        register(productRegister.productType, productRegister.creator)
-
+        register(productRegister.id, productRegister.creator)
 
     fun <T : Product> register(productType: String, creator: ProductCreator<T>): ProductRegistry {
         creators[productType] = creator
@@ -23,4 +22,8 @@ object ProductRegistry {
             ?: throw ProductTypeNotRegistered(productType)
         return creator.invoke() as T
     }
+
+    fun asMap(): Map<String, String> =
+        creators.mapValues { it.value().description }
+
 }

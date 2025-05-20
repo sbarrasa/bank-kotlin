@@ -6,11 +6,11 @@ class CreditCard: Card(CreditCard), CreditProduct {
     override var creditLimit: Double? = null
     var tier: String? = null
 
-    override fun description() = "${super.description()} ${tier ?: ""}".trimEnd()
+    override fun fullDescription() = "${super.fullDescription()} ${tier ?: ""}".trimEnd()
 
     companion object: ProductRegister<CreditCard> {
-        override val productType = "TC"
-        override val name = "Tarjeta de crédito"
+        override val id = "TC"
+        override val description = "Tarjeta de crédito"
         override val creator = ::CreditCard
     }
 }

@@ -7,5 +7,5 @@ import com.sbarrasa.bank.product.ProductHeader
 abstract class Account(header: ProductHeader): Product(header) {
     var cbu: String? = null
     var currency: Currency? = null
-    override fun description() = "${super.description()} en ${currency?.description}"
+    override fun fullDescription() = "${super.description} en ${currency?.description}"
 }
