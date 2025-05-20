@@ -1,11 +1,12 @@
 package com.sbarrasa.bank.product.factory
 
 import com.sbarrasa.bank.product.Product
+import com.sbarrasa.util.id.IdDescMap
 
 
 typealias ProductCreator<T> = () -> T
 
-object ProductRegistry {
+object ProductRegistry: IdDescMap {
     private val creators = HashMap<String, ProductCreator<out Product>>()
 
     fun <T : Product> register(productRegister: ProductRegister<T>) =
@@ -23,7 +24,8 @@ object ProductRegistry {
         return creator.invoke() as T
     }
 
-    fun asMap(): Map<String, String> =
+    override fun asMap() =
         creators.mapValues { it.value().description }
+
 
 }
