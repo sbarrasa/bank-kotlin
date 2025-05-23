@@ -8,8 +8,7 @@ class ValidatorTest {
     @Test
     fun validateString(){
         val result = "Hola mundo".validate(
-            {this.isNotBlank()},
-            {this.length > 5 }
+            {this.isNotBlank() && this.length > 5}
         )
 
         assertTrue { result }
@@ -17,10 +16,7 @@ class ValidatorTest {
 
     @Test
     fun validateInt(){
-        val result = 10.validate(
-            {  this > 1 },
-            { this -5 == 5}
-        )
+        val result = 10.validate({ this in 1..100 })
         assertTrue { result }
 
     }
@@ -28,8 +24,8 @@ class ValidatorTest {
     @Test
     fun validateWithException(){
         val validator = Validator<String>(
-            { this.length > 5},
-            onFailure = {IllegalArgumentException(it)}
+            predicate = { this.length > 5},
+            exception = {IllegalArgumentException(it)}
         )
 
         val value  = "Hola"

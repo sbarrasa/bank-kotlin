@@ -1,15 +1,18 @@
 package com.sbarrasa.util
-fun <T> T.validate(vararg validators: T.() -> Boolean): Boolean {
-    return validators.all { it() }
+
+fun <T> T.validate(
+    predicate: T.() -> Boolean,
+    exception: ((T) -> Exception)? = null
+): Boolean {
+    val valid = predicate()
+    if(!valid && exception != null)
+        throw exception(this)
+    return valid
 }
 
 class Validator<T>(
-    private vararg val validators: T.() -> Boolean,
-    val onFailure: ((T) -> Exception)? = null
+    val predicate: T.() -> Boolean,
+    val exception: ((T) -> Exception)? = null
 ) {
-    fun validate(obj: T): Boolean {
-        val valid = obj.validate(*validators)
-        if (!valid) onFailure?.let { throw it(obj) }
-        return valid
-    }
+    fun validate(obj: T): Boolean = obj.validate(predicate, exception)
 }
