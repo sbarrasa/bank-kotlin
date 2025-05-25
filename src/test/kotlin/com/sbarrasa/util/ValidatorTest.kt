@@ -10,7 +10,6 @@ class ValidatorTest {
         val result = "Hola mundo".isValid {
             this.isNotBlank() and (this.length > 5)
         }
-
         assertTrue { result }
      }
 

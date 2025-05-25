@@ -2,29 +2,39 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.9.22"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
 }
 
 val group = "com.sbarrasa"
 val version = "1.0-SNAPSHOT"
-val exposedVersion = "0.50.1"
-val h2Version = "2.2.224"
-
+val jvmVersion = "1.9.22"
+val exposedVersion = "0.50+"
+val h2Version = "2.2+"
+val ktorVersion = "2.3+"
+val logbackVersion = "1.5+"
+val dateTimeVersion = "0.5+"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation("io.ktor:ktor-server-core:$ktorVersion")
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
     implementation("com.h2database:h2:$h2Version")
-    implementation("ch.qos.logback:logback-classic:1.5.13")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
+    testImplementation(kotlin("test"))
 }
 
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "19"
 }

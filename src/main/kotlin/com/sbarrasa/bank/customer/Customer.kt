@@ -2,11 +2,12 @@ package com.sbarrasa.bank.customer
 
 import com.sbarrasa.util.id.Id
 import kotlinx.datetime.LocalDate
+import kotlinx.serialization.Serializable
 
-data class Customer(
-    override val id: Int,
-    val name: String,
-    val lastName: String,
-    val birthDay: LocalDate
-        ) : Id<Int> {
-}
+@Serializable
+data class Customer (
+    override var id: Int = 0,
+    var name: String,
+    var lastName: String,
+    var birthDay: LocalDate
+) : Id<Int>

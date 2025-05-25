@@ -1,5 +1,6 @@
 package com.sbarrasa.bank.product.factory
 
-class ProductTypeNotRegistered(productType: String) : RuntimeException("Producto no registrado ${productType}") {
-
-}
+class ProductTypeNotRegistered(
+    val productType: String,
+    override val message: String = "Producto no registrado ${productType}"
+): RuntimeException(message)

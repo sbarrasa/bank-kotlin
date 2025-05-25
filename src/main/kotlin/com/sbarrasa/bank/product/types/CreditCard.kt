@@ -9,7 +9,7 @@ class CreditCard: Card(CreditCard), CreditProduct {
     override fun fullDescription() = "${super.fullDescription()} ${tier ?: ""}".trimEnd()
 
     companion object: ProductRegister<CreditCard> {
-        override val id = "TC"
+        override var id = "TC"
         override val description = "Tarjeta de crédito"
         override val creator = ::CreditCard
     }

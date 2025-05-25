@@ -5,7 +5,7 @@ import com.sbarrasa.bank.product.factory.ProductRegister
 class SavingAccount: Account(SavingAccount), CreditProduct {
     override var creditLimit: Double? = null
     companion object: ProductRegister<SavingAccount> {
-        override val id = "CC"
+        override var id = "CC"
         override val description = "Cuenta corriente"
         override val creator = ::SavingAccount
     }

@@ -1,0 +1,39 @@
+### Listar todos los customers
+GET http://localhost:8080/customers
+Accept: application/json
+
+###
+
+### Listar customer por id
+GET http://localhost:8080/customers/1
+Accept: application/json
+
+###
+
+### Crear un customer
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "Juan",
+  "lastName": "Pérez",
+  "birthDay": "1985-10-23"
+}
+
+###
+
+### Actualizar un customer
+PUT http://localhost:8080/customers/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Juan",
+  "lastName": "Pérez Actualizado",
+  "birthDay": "1985-10-23"
+}
+
+###
+
+### Eliminar un customer
+DELETE http://localhost:8080/customers/1
