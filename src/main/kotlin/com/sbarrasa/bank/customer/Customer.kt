@@ -9,5 +9,6 @@ data class Customer (
     override var id: Int = 0,
     var name: String,
     var lastName: String,
-    var birthDay: LocalDate
+    var birthDay: LocalDate,
+    var gender: Gender
 ) : Id<Int>

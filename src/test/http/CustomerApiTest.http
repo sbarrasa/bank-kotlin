@@ -15,12 +15,23 @@ POST http://localhost:8080/customers
 Content-Type: application/json
 
 {
-  "name": "Juan",
+  "name": "María",
   "lastName": "Pérez",
-  "birthDay": "1985-10-23"
+  "birthDay": "1985-10-23",
+  "gender": "F"
+
 }
 
-###
+### Crear otro customer
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "Sebastián Gabriel",
+  "lastName": "Barrasa",
+  "birthDay": "1974-06-07",
+  "gender": "M"
+}
 
 ### Actualizar un customer
 PUT http://localhost:8080/customers/1
@@ -28,9 +39,10 @@ Content-Type: application/json
 
 {
   "id": 1,
-  "name": "Juan",
-  "lastName": "Pérez Actualizado",
-  "birthDay": "1985-10-23"
+  "name": "María",
+  "lastName": "Pérez",
+  "birthDay": "1985-10-23",
+  "gender": "F"
 }
 
 ###
