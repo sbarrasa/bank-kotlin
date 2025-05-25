@@ -6,9 +6,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Customer (
-    override var id: Int = 0,
+    override var id: Int? = null,
     var name: String,
     var lastName: String,
     var birthDay: LocalDate,
     var gender: Gender
-) : Id<Int>
+) : Id<Int?>
