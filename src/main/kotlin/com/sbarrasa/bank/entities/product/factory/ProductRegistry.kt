@@ -1,6 +1,6 @@
-package com.sbarrasa.bank.product.factory
+package com.sbarrasa.bank.entities.product.factory
 
-import com.sbarrasa.bank.product.Product
+import com.sbarrasa.bank.entities.product.Product
 import com.sbarrasa.util.id.IdDescMap
 
 

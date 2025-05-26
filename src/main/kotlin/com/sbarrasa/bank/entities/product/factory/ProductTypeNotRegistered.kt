@@ -1,4 +1,4 @@
-package com.sbarrasa.bank.product.factory
+package com.sbarrasa.bank.entities.product.factory
 
 class ProductTypeNotRegistered(
     val productType: String,

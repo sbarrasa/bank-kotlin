@@ -1,4 +1,4 @@
-package com.sbarrasa.bank.customer
+package com.sbarrasa.bank.entities.customer
 
 import kotlinx.datetime.LocalDate
 import java.time.Month
@@ -12,7 +12,9 @@ class CustomerTest{
             id = 1,
             name="Sebastian",
             lastName = "Barrasa",
-            birthDay = LocalDate(1974, Month.JUNE, 7 ))
+            birthDay = LocalDate(1974, Month.JUNE, 7 ),
+            gender = Gender.M
+        )
 
         assertEquals(Month.JUNE, customer1.birthDay.month)
 

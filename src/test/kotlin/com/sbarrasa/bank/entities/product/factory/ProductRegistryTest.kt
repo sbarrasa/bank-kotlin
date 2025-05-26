@@ -1,7 +1,7 @@
-package com.sbarrasa.bank.product.factory
+package com.sbarrasa.bank.entities.product.factory
 
-import com.sbarrasa.bank.product.Product
-import com.sbarrasa.bank.product.types.*
+import com.sbarrasa.bank.entities.product.Product
+import com.sbarrasa.bank.entities.product.types.*
 import kotlin.test.*
 
 class ProductRegistryTest{
@@ -16,7 +16,7 @@ class ProductRegistryTest{
 
     @Test
     fun unknownProductType() {
-        assertFailsWith<ProductTypeNotRegistered>{ProductRegistry.create<Product>("HOLA")}
+        assertFailsWith<ProductTypeNotRegistered>{ ProductRegistry.create<Product>("HOLA")}
     }
 
     @Test

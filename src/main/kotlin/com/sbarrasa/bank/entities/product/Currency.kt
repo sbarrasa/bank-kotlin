@@ -1,4 +1,4 @@
-package com.sbarrasa.bank.product
+package com.sbarrasa.bank.entities.product
 
 import com.sbarrasa.util.id.Desc
 import com.sbarrasa.util.id.EnumDescMap

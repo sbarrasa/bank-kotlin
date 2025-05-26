@@ -1,6 +1,6 @@
 package com.sbarrasa.bank.repository
 
-import com.sbarrasa.bank.customer.Customer
+import com.sbarrasa.bank.entities.customer.Customer
 
 
 open class MemCustomerRepository: CustomerRepository {

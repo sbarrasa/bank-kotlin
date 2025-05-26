@@ -1,4 +1,4 @@
-package com.sbarrasa.bank.customer
+package com.sbarrasa.bank.entities.customer
 
 import com.sbarrasa.util.id.Id
 import kotlinx.datetime.LocalDate

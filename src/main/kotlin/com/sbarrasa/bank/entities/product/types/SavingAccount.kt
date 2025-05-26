@@ -1,6 +1,6 @@
-package com.sbarrasa.bank.product.types
+package com.sbarrasa.bank.entities.product.types
 
-import com.sbarrasa.bank.product.factory.ProductRegister
+import com.sbarrasa.bank.entities.product.factory.ProductRegister
 
 class SavingAccount: Account(SavingAccount), CreditProduct {
     override var creditLimit: Double? = null

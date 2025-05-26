@@ -1,6 +1,6 @@
 package com.sbarrasa.bank.controller
 
-import com.sbarrasa.bank.customer.Customer
+import com.sbarrasa.bank.entities.customer.Customer
 import com.sbarrasa.bank.repository.CustomerRepository
 import io.ktor.server.routing.*
 import io.ktor.server.application.*

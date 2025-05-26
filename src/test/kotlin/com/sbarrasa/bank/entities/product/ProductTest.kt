@@ -1,6 +1,8 @@
-package com.sbarrasa.bank.product
+package com.sbarrasa.bank.entities.product
 
-import com.sbarrasa.bank.product.types.*
+import com.sbarrasa.bank.entities.product.types.CheckingAccount
+import com.sbarrasa.bank.entities.product.types.CreditCard
+import com.sbarrasa.bank.entities.product.types.DebitCard
 import kotlin.test.*
 
 class ProductTest {

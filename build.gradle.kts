@@ -32,6 +32,8 @@ dependencies {
     implementation("com.h2database:h2:$h2Version")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
     testImplementation(kotlin("test"))
+    testImplementation("io.ktor:ktor-server-test-host-jvm:2.3.13")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.9.22")
 }
 
 

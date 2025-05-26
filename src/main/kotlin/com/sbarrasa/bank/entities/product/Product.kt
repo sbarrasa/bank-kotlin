@@ -1,6 +1,6 @@
-package com.sbarrasa.bank.product
+package com.sbarrasa.bank.entities.product
 
-import com.sbarrasa.bank.product.types.CreditProduct
+import com.sbarrasa.bank.entities.product.types.CreditProduct
 
 abstract class Product(header: ProductHeader): ProductHeader by header {
     val isCreditProduct = (this is CreditProduct)

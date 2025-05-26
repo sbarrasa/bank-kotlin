@@ -1,8 +1,8 @@
-package com.sbarrasa.bank.product.types
+package com.sbarrasa.bank.entities.product.types
 
-import com.sbarrasa.bank.product.Branch
-import com.sbarrasa.bank.product.Product
-import com.sbarrasa.bank.product.ProductHeader
+import com.sbarrasa.bank.entities.product.Branch
+import com.sbarrasa.bank.entities.product.Product
+import com.sbarrasa.bank.entities.product.ProductHeader
 import java.time.LocalDate
 
 abstract class Card(header: ProductHeader): Product(header) {
