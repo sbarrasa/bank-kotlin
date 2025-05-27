@@ -10,7 +10,7 @@ val version = "1.0-SNAPSHOT"
 val jvmVersion = "1.9.22"
 val exposedVersion = "0.50+"
 val h2Version = "2.2+"
-val ktorVersion = "2.3+"
+val ktorVersion = "2+"
 val logbackVersion = "1.5+"
 val dateTimeVersion = "0.5+"
 
@@ -23,6 +23,7 @@ dependencies {
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
     implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+    implementation("io.ktor:ktor-server-status-pages:$ktorVersion")
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
     testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
