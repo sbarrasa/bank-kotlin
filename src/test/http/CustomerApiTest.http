@@ -2,13 +2,17 @@
 GET http://localhost:8080/customers
 Accept: application/json
 
-###
-
-### Listar customer por id
+### Obtener customer por id
 GET http://localhost:8080/customers/1
 Accept: application/json
 
-###
+### Obtener customer con id invalido
+GET http://localhost:8080/customers/sarasa
+Accept: application/json
+
+### Obtener customer con id nulo
+GET http://localhost:8080/customers/
+Accept: application/json
 
 ### Crear un customer
 POST http://localhost:8080/customers
