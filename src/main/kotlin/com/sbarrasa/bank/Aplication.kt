@@ -1,6 +1,7 @@
 package com.sbarrasa.bank
 
-import com.sbarrasa.bank.config.CustomerModule
+import com.sbarrasa.bank.module.CustomerModule
+import com.sbarrasa.bank.module.DBConnection
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -11,9 +12,11 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
+import org.h2.tools.Server
 
 
 fun main(){
+    DBConnection.init()
     embeddedServer(
         Netty,
         port = 8080,
@@ -34,7 +37,13 @@ fun Application.module() {
     }
 
     routing {
-        CustomerModule.register(this)
+        CustomerModule.controller.register(this)
+    }
+
+    val h2Server = Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092").start()
+
+    environment.monitor.subscribe(ApplicationStopped) {
+        h2Server.stop()
     }
 }
 

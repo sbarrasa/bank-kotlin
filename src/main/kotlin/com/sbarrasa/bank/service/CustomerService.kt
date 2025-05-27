@@ -1,7 +1,7 @@
 package com.sbarrasa.bank.service
 
-import com.sbarrasa.bank.entities.customer.Customer
-import com.sbarrasa.bank.repository.CustomerRepository
+import com.sbarrasa.bank.model.customer.Customer
+import com.sbarrasa.bank.repository.customer.CustomerRepository
 import io.ktor.server.plugins.*
 
 class CustomerService(private val repo: CustomerRepository) {
@@ -9,7 +9,8 @@ class CustomerService(private val repo: CustomerRepository) {
     fun update(id: Int, customer: Customer): Customer {
       val currentCustomer = get(id)
       CustomerMapper.map(customer, currentCustomer)
-      return repo.update(currentCustomer)
+      repo.update(currentCustomer)
+      return currentCustomer
     }
 
     fun getAll(): List<Customer> {
@@ -21,7 +22,7 @@ class CustomerService(private val repo: CustomerRepository) {
             ?: throw NotFoundException("Id: ${id} no encontrado")
     }
 
-    fun add(customer: Customer): Any {
+    fun add(customer: Customer): Customer {
         return repo.add(customer)
     }
 

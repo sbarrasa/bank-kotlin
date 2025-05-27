@@ -1,7 +1,7 @@
 package com.sbarrasa.bank.service
 
-import com.sbarrasa.bank.entities.customer.Customer
-import com.sbarrasa.bank.entities.customer.Gender
+import com.sbarrasa.bank.model.customer.Customer
+import com.sbarrasa.bank.model.customer.Gender
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Month
 import kotlin.test.*

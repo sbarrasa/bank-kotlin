@@ -1,6 +1,6 @@
 package com.sbarrasa.bank.controller
 
-import com.sbarrasa.bank.entities.customer.Customer
+import com.sbarrasa.bank.model.customer.Customer
 import com.sbarrasa.bank.service.CustomerService
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
@@ -8,8 +8,8 @@ import io.ktor.server.plugins.*
 import io.ktor.server.response.*
 import io.ktor.server.request.*
 class CustomerController(private val customerService: CustomerService) {
-    fun register(route: Route) {
-        route.route("/customers") {
+    fun register(parent: Route) {
+        parent.route("/customers") {
             get {
                 call.respond(customerService.getAll())
             }
