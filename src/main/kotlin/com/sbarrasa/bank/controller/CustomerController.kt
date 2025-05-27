@@ -7,8 +7,8 @@ import io.ktor.server.application.*
 import io.ktor.server.plugins.*
 import io.ktor.server.response.*
 import io.ktor.server.request.*
-class CustomerRoutes(val customerService: CustomerService) {
-    fun register(route: Route, ) {
+class CustomerController(private val customerService: CustomerService) {
+    fun register(route: Route) {
         route.route("/customers") {
             get {
                 call.respond(customerService.getAll())
