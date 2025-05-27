@@ -16,7 +16,7 @@ class CustomerTest{
             gender = Gender.M
         )
 
-        assertEquals(Month.JUNE, customer1.birthDay.month)
+        assertEquals(Month.JUNE, customer1.birthDay!!.month)
 
     }
 }
