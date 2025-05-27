@@ -17,7 +17,7 @@ class CustomerService(private val repo: CustomerRepository) {
     }
 
     fun getById(id: Int): Customer {
-        return repo.getById(id)
+        return repo.get(id)
             ?: throw NotFoundException("Id: ${id} no encontrado")
     }
 

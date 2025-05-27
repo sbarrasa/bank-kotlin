@@ -10,7 +10,7 @@ open class MemCustomerRepository: CustomerRepository {
         return items.values.toList()
     }
 
-    override fun getById(id: Int?): Customer? {
+    override fun get(id: Int?): Customer? {
         return items[id]
     }
 
