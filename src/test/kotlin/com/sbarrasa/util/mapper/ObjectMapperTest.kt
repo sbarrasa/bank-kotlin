@@ -1,18 +1,33 @@
 package com.sbarrasa.util.mapper
 
+import com.sbarrasa.util.ObjectMapper
 import kotlin.test.*
 class ObjectMapperTest{
-    data class SourceObject(val name: String?=null, val age: Int?=null)
-    data class TargetObject(var edad: Int?=null, var nombre: String?=null)
-
-    val mapper = ObjectMapper<SourceObject, TargetObject>() {
-        bind(SourceObject::name, TargetObject::nombre)
-        bind(SourceObject::age, TargetObject::edad)
+    interface PersonInterface {
+        var name: String?
+        var age: Int?
     }
+
+    data class Person(override var name: String?=null,
+                      override var age: Int?=null)
+        : PersonInterface
+     
+    data class Persona(var edad: Int?=null, var nombre: String?=null)
+    
+    data class Customer(val id: Int, override var name: String?, override var age: Int?): PersonInterface
+
+    data  class InvariantPerson(val name: String, val age: Int)
+
+
     @Test
     fun mapWithallData(){
-        val source = SourceObject("Juan", 20)
-        val target = TargetObject(nombre = "Pepe", edad = 42)
+        val mapper = ObjectMapper {
+            bind(Person::name to Persona::nombre)
+            bind(Person::age to Persona::edad)
+        }
+
+        val source = Person("Juan", 20)
+        val target = Persona(nombre = "Pepe", edad = 42)
 
         assertEquals("Pepe", target.nombre)
         mapper.map(source, target)
@@ -21,12 +36,82 @@ class ObjectMapperTest{
 
     @Test
     fun mapWithNullData(){
-        val source = SourceObject(age =20)
-        val target = TargetObject(nombre = "Pepe",  edad= 42)
+        val mapper = ObjectMapper {
+            bind(Person::name to Persona::nombre)
+            bind(Person::age to Persona::edad)
+        }
+
+        val source = Person(age =20)
+        val target = Persona(nombre = "Pepe",  edad= 42)
 
         assertEquals("Pepe", target.nombre)
         mapper.map(source, target)
         assertEquals("Pepe", target.nombre)
+    }
+
+    @Test
+    fun mapNotIgnoreNulls(){
+        val mapper = ObjectMapper {
+            bindAll(Person::class, Person::class)
+            ignoreSourceNulls = false
+        }
+
+        val source = Person(age = 20)
+        val target = Person(name = "Pepe",  age = 42)
+
+        assertEquals("Pepe", target.name)
+        mapper.map(source, target)
+        assertNull(target.name)
+    }
+
+    @Test
+    fun mapSameClass(){
+        val mapper = ObjectMapper{
+            bindAll(Customer::class, Person::class)
+        }
+
+        val customer = Customer(1, "Juan", 38)
+        val person = Person()
+
+        mapper.map(customer, person)
+
+        assertEquals("Juan", person.name)
+
+    }
+    @Test
+    fun mapOneAnecestorClass(){
+        val mapper = ObjectMapper.bindAll(PersonInterface::class)
+
+        val customer = Customer(1, "Juan", 38)
+        val person = Person()
+
+        mapper.map(customer, person)
+
+        assertEquals("Juan", person.name)
+
+    }
+
+    @Test
+    fun mapInvariant(){
+        val mapper = ObjectMapper { bindAll(InvariantPerson::class, Person::class) }
+
+        val person1 = InvariantPerson("Juan", 20)
+        val person2 = Person()
+
+        assertNull(person2.name)
+
+        mapper.map(person1, person2)
+        assertEquals("Juan", person2.name)
+    }
+
+    @Test
+    fun createWithMap(){
+        val mapper = ObjectMapper { bindAll(InvariantPerson::class, Person::class) }
+
+        val person1 = InvariantPerson("Juan", 20)
+        val person2 = mapper.map(person1, Person())
+        assertEquals("Juan", person2.name)
+
     }
 
 }
