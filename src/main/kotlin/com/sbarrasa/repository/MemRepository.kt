@@ -11,7 +11,8 @@ open class MemRepository<I : Any?, T : Id<I>>(
 
     override fun getAll(): List<T> = items.values.toList()
 
-    override fun get(id: I): T? = items[id]
+    override fun get(id: I): T = items[id]
+        ?: throw EntityNotFoundException("Id: ${id} no encontrado")
 
     override fun add(entity: T): T {
         if (autoId)
@@ -21,13 +22,13 @@ open class MemRepository<I : Any?, T : Id<I>>(
         return entity
     }
 
-    override fun update(entity: T): T {
-        val id = entity.id
+    override fun update(id: I, entity: T): T {
         items[id] = entity
         return entity
     }
 
     override fun delete(id: I): T {
-        return items.remove(id)!!
+        return items.remove(id)
+            ?: throw EntityNotFoundException("Id: ${id} no encontrado")
     }
 }

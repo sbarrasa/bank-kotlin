@@ -1,17 +1,17 @@
 package com.sbarrasa.bank.controller
 
 import com.sbarrasa.bank.model.customer.Customer
-import com.sbarrasa.bank.service.CustomerService
+import com.sbarrasa.bank.repository.CustomerRepository
 import io.ktor.server.routing.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.*
 import io.ktor.server.response.*
 import io.ktor.server.request.*
-class CustomerController(private val customerService: CustomerService) {
+class CustomerController(private val customerRepository: CustomerRepository) {
     fun register(parent: Route) {
         parent.route("/customers") {
             get {
-                call.respond(customerService.getAll())
+                call.respond(customerRepository.getAll())
             }
 
             get ("/") {
@@ -20,11 +20,11 @@ class CustomerController(private val customerService: CustomerService) {
 
             get("/{id}") {
                 val id = call.requireId()
-                call.respond(customerService.get(id))
+                call.respond(customerRepository.get(id))
             }
             post {
                 val customerRequest = call.receive<Customer>()
-                call.respond(customerService.add(customerRequest))
+                call.respond(customerRepository.add(customerRequest))
             }
 
             put  ("/") {
@@ -34,7 +34,7 @@ class CustomerController(private val customerService: CustomerService) {
             put("/{id}") {
                 val id = call.requireId()
                 val customerRequest = call.receive<Customer>()
-                call.respond(customerService.update(id, customerRequest))
+                call.respond(customerRepository.update(id, customerRequest))
             }
 
             delete ("/") {
@@ -43,7 +43,7 @@ class CustomerController(private val customerService: CustomerService) {
 
             delete("/{id}") {
                 val id = call.requireId()
-                call.respond(customerService.delete(id))
+                call.respond(customerRepository.delete(id))
             }
         }
     }

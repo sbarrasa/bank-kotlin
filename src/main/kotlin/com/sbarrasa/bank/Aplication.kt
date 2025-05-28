@@ -1,7 +1,9 @@
 package com.sbarrasa.bank
 
-import com.sbarrasa.bank.module.CustomerModule
+import com.sbarrasa.bank.controller.CustomerController
 import com.sbarrasa.bank.module.DBConnection
+import com.sbarrasa.bank.repository.RepositoryRegistry
+import com.sbarrasa.repository.EntityNotFoundException
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -13,10 +15,14 @@ import io.ktor.server.routing.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import org.h2.tools.Server
+import com.sbarrasa.util.MainArgs
 
+fun main(args: Array<String>){
+    val params = MainArgs(args)
+    RepositoryRegistry.setType(params["repository"]?: "mem")
 
-fun main(){
     DBConnection.init()
+
     embeddedServer(
         Netty,
         port = 8080,
@@ -27,17 +33,19 @@ fun main(){
 
 
 fun Application.module() {
+
     install(ContentNegotiation) {
         json()
     }
 
     install(StatusPages) {
         handleException<BadRequestException>(HttpStatusCode.BadRequest)
-        handleException<NotFoundException>(HttpStatusCode.NotFound)
+        handleException<EntityNotFoundException>(HttpStatusCode.NotFound)
     }
 
     routing {
-        CustomerModule.controller.register(this)
+        val controller = CustomerController(RepositoryRegistry.repository)
+        controller.register(this)
     }
 
     val h2Server = Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092").start()

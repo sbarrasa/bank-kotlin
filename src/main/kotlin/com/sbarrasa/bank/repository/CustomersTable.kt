@@ -1,10 +1,10 @@
-package com.sbarrasa.bank.repository.customer
+package com.sbarrasa.bank.repository
 
 import com.sbarrasa.bank.model.customer.Gender
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.kotlin.datetime.date
 
-object Customers : IntIdTable() {
+object CustomersTable : IntIdTable("customers") {
     val firstName = varchar("first_name", 50)
     val lastName = varchar("last_name", 50)
     val birthDay = date("birth_day")

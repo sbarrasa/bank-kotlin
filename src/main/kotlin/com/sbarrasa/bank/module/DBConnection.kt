@@ -1,6 +1,6 @@
 package com.sbarrasa.bank.module
 
-import com.sbarrasa.bank.repository.customer.Customers
+import com.sbarrasa.bank.repository.CustomersTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.jetbrains.exposed.sql.Database
@@ -15,7 +15,7 @@ object DBConnection {
         )
 
         transaction {
-            SchemaUtils.create(Customers)
+            SchemaUtils.create(CustomersTable)
         }
     }
 }

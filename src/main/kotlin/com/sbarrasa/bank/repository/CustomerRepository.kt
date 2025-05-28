@@ -1,4 +1,4 @@
-package com.sbarrasa.bank.repository.customer
+package com.sbarrasa.bank.repository
 
 import com.sbarrasa.bank.model.customer.Customer
 import com.sbarrasa.repository.Repository
