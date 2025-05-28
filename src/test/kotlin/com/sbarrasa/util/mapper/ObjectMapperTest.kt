@@ -1,6 +1,7 @@
 package com.sbarrasa.util.mapper
 
 import com.sbarrasa.util.ObjectMapper
+import kotlinx.datetime.*
 import kotlin.test.*
 class ObjectMapperTest{
     interface PersonInterface {
@@ -18,12 +19,14 @@ class ObjectMapperTest{
 
     data  class InvariantPerson(val name: String, val age: Int)
 
+    data class PersonWithBirthDate(val name: String?, val birthDay: LocalDate)
+
 
     @Test
     fun mapWithallData(){
         val mapper = ObjectMapper {
-            bind(Person::name to Persona::nombre)
-            bind(Person::age to Persona::edad)
+            bind(Person::name, Persona::nombre)
+            bind(Person::age, Persona::edad)
         }
 
         val source = Person("Juan", 20)
@@ -37,8 +40,8 @@ class ObjectMapperTest{
     @Test
     fun mapWithNullData(){
         val mapper = ObjectMapper {
-            bind(Person::name to Persona::nombre)
-            bind(Person::age to Persona::edad)
+            bind(Person::name, Persona::nombre)
+            bind(Person::age, Persona::edad)
         }
 
         val source = Person(age =20)
@@ -114,4 +117,24 @@ class ObjectMapperTest{
 
     }
 
+    @Test
+    fun mapWithLambdagetter() {
+        val today = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+
+        val mapper = ObjectMapper<PersonWithBirthDate, Person> {
+            bind(PersonWithBirthDate::name, Person::name)
+            bind(
+                { it.birthDay.yearsUntil(today) },
+                Person::age
+            )
+        }
+
+        val person1 = PersonWithBirthDate("María", today.minus(30, DateTimeUnit.YEAR))
+        val person2 = Person()
+
+        mapper.map(person1, person2)
+
+        assertEquals("María", person2.name)
+        assertEquals(30, person2.age)
+    }
 }

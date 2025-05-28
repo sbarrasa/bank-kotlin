@@ -6,10 +6,5 @@ import com.sbarrasa.util.ObjectMapper
 
 object EntityToCustomer: ObjectMapper<CustomerEntity, Customer>({
     bindAll(CustomerEntity::class, Customer::class)
-}){
-    override fun map(source: CustomerEntity, target: Customer): Customer {
-        super.map(source, target)
-        target.id = source.id.value
-        return target
-    }
-}
+    bind({it.id.value}, Customer::id)
+})
