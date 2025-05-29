@@ -20,7 +20,7 @@ class ArgsMapper(
 
     operator fun get(key: String) = asMap[key]
     companion object  {
-        const val DEFAULT_PREFIX = "--"
+        const val DEFAULT_PREFIX = "-"
         const val DEFAULT_SEPARATOR = "="
     }
 

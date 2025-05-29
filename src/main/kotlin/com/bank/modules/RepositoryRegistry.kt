@@ -9,7 +9,7 @@ object RepositoryRegistry {
         MEM, EXPOSED
     }
 
-    const val paramKey = "repositry"
+    const val paramKey = "repo"
 
     var type: Types = Types.MEM
 

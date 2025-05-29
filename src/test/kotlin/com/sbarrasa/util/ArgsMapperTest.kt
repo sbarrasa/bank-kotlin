@@ -7,7 +7,7 @@ import kotlin.test.*
 
 class ArgsMapperTest {
 
-    private val args = arrayOf("--repo=mem", "--user=admin", "--flag")
+    private val args = arrayOf("-repo=mem", "-user=admin", "-flag")
 
     @Test
     fun testAsMap() {
