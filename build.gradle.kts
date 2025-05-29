@@ -38,5 +38,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
     testImplementation(kotlin("test"))
+    implementation("com.github.papsign:Ktor-OpenAPI-Generator:<versión>")
+
 }
 

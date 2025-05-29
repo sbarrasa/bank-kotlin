@@ -7,6 +7,6 @@ import io.ktor.server.routing.*
 
 fun Application.configRoutes(){
     val root = this.routing {}
-    CustomerRoutes(RepositoryRegistry.repository).register(root)
+    CustomerRoutes(Repository.get).register(root)
     CodesRoutes.register(root)
 }

@@ -4,7 +4,7 @@ import com.bank.repository.CustomerRepository
 import com.bank.repository.ExposedCustomerRepository
 import com.bank.repository.MemCustomerRepository
 
-object RepositoryRegistry {
+object Repository {
     enum class Types {
         MEM, EXPOSED
     }
@@ -13,7 +13,7 @@ object RepositoryRegistry {
 
     var type: Types = Types.MEM
 
-    val repository: CustomerRepository
+    val get: CustomerRepository
         get() = when(type) {
             Types.MEM -> MemCustomerRepository()
             Types.EXPOSED -> {
@@ -23,7 +23,7 @@ object RepositoryRegistry {
         }
 
 
-    fun setType(typeStr: String?) {
+    fun set(typeStr: String?) {
         type = Types.valueOf(typeStr?:"MEM")
     }
 }
