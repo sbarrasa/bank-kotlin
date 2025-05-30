@@ -8,8 +8,8 @@ import io.ktor.server.plugins.*
 import io.ktor.server.response.*
 import io.ktor.server.request.*
 class CustomerRoutes(private val customerRepository: CustomerRepository) {
-    fun register(parent: Route) {
-        parent.route("/customers") {
+    fun register(parent: Route): Route {
+        return parent.route("/customers") {
             get {
                 call.respond(customerRepository.getAll())
             }
