@@ -6,13 +6,13 @@ import com.sbarrasa.util.id.IdDescMap
 
 typealias ProductCreator<T> = () -> T
 
-object ProductRegistry: IdDescMap {
+object ProductTypes: IdDescMap {
     private val creators = HashMap<String, ProductCreator<out Product>>()
 
     fun register(productRegister: ProductRegister<out Product>) =
         register(productRegister.id, productRegister.creator)
 
-    fun <T : Product> register(productType: String, creator: ProductCreator<T>): ProductRegistry {
+    fun <T : Product> register(productType: String, creator: ProductCreator<T>): ProductTypes {
         creators[productType] = creator
         return this
     }

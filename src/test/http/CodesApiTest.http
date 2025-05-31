@@ -1,3 +1,7 @@
+### Obtener códigos
+GET http://localhost:8080/codes/
+Accept: application/json
+
 ### Obtener géneros
 GET http://localhost:8080/codes/gender
 Accept: application/json
@@ -12,4 +16,8 @@ Accept: application/json
 
 ### Obtener tipos de producto
 GET http://localhost:8080/codes/product_types
+Accept: application/json
+
+### Obtener códigos
+GET http://localhost:8080/codes/all
 Accept: application/json

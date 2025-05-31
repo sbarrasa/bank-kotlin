@@ -1,9 +1,9 @@
 package com.bank.modules
 
-import com.bank.model.product.factory.ProductRegistry
+import com.bank.model.product.factory.ProductTypes
 import com.bank.model.product.types.*
 
-fun ProductRegistry.init(){
+fun ProductTypes.init(){
    register(SavingAccount)
    register(CheckingAccount)
    register(CreditCard)

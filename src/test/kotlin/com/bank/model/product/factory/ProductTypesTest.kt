@@ -4,10 +4,10 @@ import com.bank.model.product.Product
 import com.bank.model.product.types.*
 import kotlin.test.*
 
-class ProductRegistryTest{
+class ProductTypesTest{
     @BeforeTest
     fun init(){
-        ProductRegistry
+        ProductTypes
             .register(SavingAccount)
             .register(CheckingAccount)
             .register(CreditCard)
@@ -16,13 +16,13 @@ class ProductRegistryTest{
 
     @Test
     fun unknownProductType() {
-        assertFailsWith<ProductTypeNotRegistered>{ ProductRegistry.create<Product>("HOLA")}
+        assertFailsWith<ProductTypeNotRegistered>{ ProductTypes.create<Product>("HOLA")}
     }
 
     @Test
     fun invalidCastProductType() {
         assertFailsWith<ClassCastException> {
-            val product: SavingAccount = ProductRegistry.create("TC")
+            val product: SavingAccount = ProductTypes.create("TC")
             assertTrue(product.isCreditProduct)
         }
 
@@ -30,12 +30,12 @@ class ProductRegistryTest{
 
     @Test
     fun createSavingAccount() {
-        val product = ProductRegistry.create<SavingAccount>("CC")
+        val product = ProductTypes.create<SavingAccount>("CC")
         assertEquals("CC", product.id)
     }
 
     @Test
     fun asMap() {
-        println(ProductRegistry.asMap())
+        println(ProductTypes.asMap())
     }
 }
