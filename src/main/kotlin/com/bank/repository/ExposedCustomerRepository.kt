@@ -1,7 +1,7 @@
 package com.bank.repository
 
 import com.bank.model.customer.Customer
-import com.sbarrasa.repository.ExposedRepository
+import com.sbarrasa.exposed.repository.ExposedRepository
 import com.sbarrasa.util.ObjectMapper
 
 class ExposedCustomerRepository :
@@ -17,5 +17,5 @@ class ExposedCustomerRepository :
    object EntityToCustomer : ObjectMapper<CustomerEntity, Customer>({
       bindAll(CustomerEntity::class, Customer::class)
       bind({ it.id.value }, Customer::id)
-   })
+  })
 }

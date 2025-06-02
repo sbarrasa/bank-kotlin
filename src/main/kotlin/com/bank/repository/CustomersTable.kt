@@ -11,3 +11,4 @@ object CustomersTable : IntIdTable("customers") {
    val birthDay = date("birth_day")
    val gender = enumerationByName("gender", 1, Gender::class)
 }
+

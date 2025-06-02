@@ -21,6 +21,7 @@ Content-Type: application/json
 {
   "name": "María",
   "lastName": "Pérez",
+  "cuit": "27123456780",
   "birthDay": "1985-10-23",
   "gender": "F"
 }
@@ -50,7 +51,7 @@ PUT http://localhost:8080/customers/6
 Content-Type: application/json
 
 {
-  "cuit": "2024061470"
+  "cuit": "20240614708"
 }
 
 ###
