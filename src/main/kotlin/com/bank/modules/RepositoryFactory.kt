@@ -2,29 +2,32 @@ package com.bank.modules
 
 import com.bank.repository.ExposedCustomerRepository
 import com.bank.repository.MemCustomerRepository
+import java.util.logging.Logger
 
 object RepositoryFactory {
-    enum class Types {
-        MEM, EXPOSED
-    }
+   private val log = Logger.getLogger(this::class.simpleName)
+   enum class Types {
+      MEM, EXPOSED
+   }
 
-    const val paramKey = "repo"
+   const val paramKey = "repo"
 
-    var type: Types = Types.MEM
+   var type: Types = Types.MEM
 
-    fun create() = when(type) {
-            Types.MEM -> MemCustomerRepository()
-            Types.EXPOSED -> {
-                DBClient.init()
-                ExposedCustomerRepository()
-            }
-        }
+   fun create() = when (type) {
+      Types.MEM -> MemCustomerRepository()
+      Types.EXPOSED -> {
+         DBClient.init()
+         ExposedCustomerRepository()
+      }
+   }
 
 
-    fun setType(typeStr: String?) {
-        type = typeStr
-            ?.let { Types.valueOf(it)}
-            ?: Types.MEM
+   fun setType(typeStr: String?) {
+      log.info("Repository type: $typeStr")
+      type = typeStr
+         ?.let { Types.valueOf(it) }
+         ?: Types.MEM
 
-    }
+   }
 }
