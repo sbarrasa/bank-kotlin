@@ -11,11 +11,22 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.server.plugins.callloging.*
+import org.slf4j.event.Level
+
 
 fun Application.module() {
    configHTTP()
    configSerialization()
    configRoutes()
+   configLog()
+}
+
+internal fun Application.configLog() {
+   install(CallLogging) {
+      level = Level.INFO
+      filter { call -> true }
+   }
 }
 
 internal fun Application.configSerialization() {
@@ -45,6 +56,14 @@ internal fun Application.configHTTP() {
 
 internal inline fun <reified T : Throwable> StatusPagesConfig.handleException(status: HttpStatusCode) {
    exception<T> { call, cause ->
-      call.respond(status, cause.message ?: status.description)
+      var deepestMessage: String? = null
+      var current: Throwable? = cause
+      while (current != null) {
+         if (!current.message.isNullOrBlank()) {
+            deepestMessage = current.message
+         }
+         current = current.cause
+      }
+      call.respond(status, deepestMessage ?: status.description)
    }
 }

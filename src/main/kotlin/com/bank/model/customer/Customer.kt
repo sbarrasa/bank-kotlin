@@ -10,7 +10,7 @@ data class Customer(
    override var id: Int? = null,
    var name: String? = null,
    var lastName: String? = null,
-   var cuit: Cuit? = null,
    var birthDay: LocalDate? = null,
-   var gender: Gender? = null
-) : Id<Int?>
+   var gender: Gender? = null,
+   var cuit: Cuit? = null)
+: Id<Int?>

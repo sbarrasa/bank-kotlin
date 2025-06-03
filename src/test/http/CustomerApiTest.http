@@ -3,7 +3,7 @@ GET http://localhost:8080/customers
 Accept: application/json
 
 ### Obtener customer por id
-GET http://localhost:8080/customers/1
+GET http://localhost:8080/customers/9
 Accept: application/json
 
 ### Obtener customer con id invalido
@@ -14,16 +14,19 @@ Accept: application/json
 GET http://localhost:8080/customers/
 Accept: application/json
 
+
+### Obtener entityType de un Customer
+GET http://localhost:8080/customers/9/info
+Accept: application/json
+
 ### Crear un customer
 POST http://localhost:8080/customers
 Content-Type: application/json
 
 {
-  "name": "María",
-  "lastName": "Pérez",
-  "cuit": "27123456780",
-  "birthDay": "1985-10-23",
-  "gender": "F"
+  "name": "CocaCola",
+  "lastName": "Argentina",
+  "cuit": "30525390086"
 }
 
 ### Crear otro customer
@@ -39,7 +42,7 @@ Content-Type: application/json
 }
 
 ### Actualizar un customer
-PUT http://localhost:8080/customers/1
+PUT http://localhost:8080/customers/9
 Content-Type: application/json
 
 {
@@ -54,7 +57,6 @@ Content-Type: application/json
   "cuit": "20240614708"
 }
 
-###
 
 ### Eliminar un customer
-DELETE http://localhost:8080/customers/7
+DELETE http://localhost:8080/customers/8

@@ -39,6 +39,7 @@ dependencies {
     implementation("com.h2database:h2:$h2Version")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    implementation("io.ktor:ktor-server-call-logging")
     testImplementation(kotlin("test"))
 
 }

@@ -1,6 +1,7 @@
 package com.bank.routes
 
 import com.bank.model.customer.Customer
+import com.bank.model.customer.CustomerInfo
 import com.bank.repository.CustomerRepository
 import io.ktor.server.application.*
 import io.ktor.server.plugins.*
@@ -19,13 +20,21 @@ class CustomerRoutes(private val customerRepository: CustomerRepository) {
             call.requireId()
          }
 
+         get("/{id}/info") {
+            val id = call.requireId()
+            val customer = customerRepository.get(id)
+            val customerInfo = CustomerInfo(customer)
+            call.respond(customerInfo)
+         }
+
          get("/{id}") {
             val id = call.requireId()
             call.respond(customerRepository.get(id))
          }
          post {
             val customerRequest = call.receive<Customer>()
-            call.respond(customerRepository.add(customerRequest))
+            val customerCreate = customerRepository.add(customerRequest)
+            call.respond(customerCreate)
          }
 
          put("/") {
