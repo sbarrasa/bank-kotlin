@@ -7,14 +7,14 @@ import com.sbarrasa.util.ObjectMapper
 class ExposedCustomerRepository :
    CustomerRepository, ExposedRepository<Customer, CustomerEntity>(
    entityClass = CustomerEntity,
-   mapToDTO = { EntityToCustomer.map(it, Customer()) },
-   mapToEntity = { dto, dbEntity -> CustomerToEntity.map(dto, dbEntity) }
+   mapToDTO = { DTOMapper.map(it, Customer()) },
+   mapToEntity = { dto, dbEntity -> EntityMapper.map(dto, dbEntity) }
 ) {
-   object CustomerToEntity : ObjectMapper<Customer, CustomerEntity>({
+   object EntityMapper : ObjectMapper<Customer, CustomerEntity>({
       bindAll(Customer::class, CustomerEntity::class)
    })
 
-   object EntityToCustomer : ObjectMapper<CustomerEntity, Customer>({
+   object DTOMapper : ObjectMapper<CustomerEntity, Customer>({
       bindAll(CustomerEntity::class, Customer::class)
       bind({ it.id.value }, Customer::id)
   })
