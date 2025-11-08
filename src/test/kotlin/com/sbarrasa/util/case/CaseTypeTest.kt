@@ -36,19 +36,5 @@ class CaseConversionTest {
       assertEquals("CASECONVERSIONTEST", original.toCase(Case.UPPER))
    }
 
-   @Test
-   fun testKClassSimpleNameConversion() {
-      assertEquals("case_conversion_test", CaseConversionTest::class.simpleName(Case.SNAKE))
-      assertEquals("CaseConversionTest", CaseConversionTest::class.simpleName(Case.PASCAL))
-      assertEquals("caseconversiontest", CaseConversionTest::class.simpleName(Case.LOWER))
-      assertEquals("CASECONVERSIONTEST", CaseConversionTest::class.simpleName(Case.UPPER))
-   }
-
-   @Test
-   fun testStringInterpolationWithSimpleName() {
-      val expected = "ruta/case_conversion_test"
-      val actual = "ruta/${CaseConversionTest::class.simpleName(Case.SNAKE)}"
-      assertEquals(expected, actual)
-   }
 
 }

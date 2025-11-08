@@ -7,16 +7,15 @@ import com.bank.model.product.factory.ProductFactory
 import com.sbarrasa.cuit.EntityCodeMap
 import com.sbarrasa.cuit.EntityType
 import com.sbarrasa.util.case.Case
-import com.sbarrasa.util.id.CodesClassMap
+import com.sbarrasa.util.id.IdDescClassMap
 
-object Codes: CodesClassMap (
+object Codes: IdDescClassMap (
    keyCase = Case.SNAKE,
-   classes = listOf(
-      ProductFactory,
+   ProductFactory,
       Branch,
       Currency,
       Gender,
       EntityType,
       EntityCodeMap,
    )
-)
+
