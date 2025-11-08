@@ -9,5 +9,5 @@ abstract class Card(header: ProductHeader) : Product(header) {
    var branch: Branch? = null
    var number: String? = null
    var expirationDate: LocalDate? = null
-   override fun fullDescription() = "${super.description} ${branch?.description}"
+   override fun fullDescription() = "$description ${branch?.description}"
 }
