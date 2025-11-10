@@ -7,7 +7,7 @@ class CodesTest {
    @Test
    fun getEntries() {
       ProductFactory.init()
-      Codes.entries.forEach {
+      CodesCatalog.entries.forEach {
          println(it.key)
          it.value.forEach { println("   $it")}
       }

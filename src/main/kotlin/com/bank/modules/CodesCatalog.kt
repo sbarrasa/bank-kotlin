@@ -9,7 +9,7 @@ import com.sbarrasa.cuit.EntityType
 import com.sbarrasa.util.case.Case
 import com.sbarrasa.id.IdDescClassMap
 
-object Codes: IdDescClassMap (
+object CodesCatalog: IdDescClassMap (
    keyCase = Case.SNAKE,
    ProductFactory,
       EntityType::class,

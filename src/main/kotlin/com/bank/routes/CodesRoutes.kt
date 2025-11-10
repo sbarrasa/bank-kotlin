@@ -1,6 +1,6 @@
 package com.bank.routes
 
-import com.bank.modules.Codes
+import com.bank.modules.CodesCatalog
 import io.ktor.server.application.*
 import io.ktor.server.plugins.*
 import io.ktor.server.response.*
@@ -12,16 +12,16 @@ object CodesRoutes {
 
       parent.route("/codes") {
          get("/all") {
-            call.respond(Codes)
+            call.respond(CodesCatalog)
          }
 
          get("/") {
-            call.respond(Codes.keys)
+            call.respond(CodesCatalog.keys)
          }
 
          get("/{code}") {
             val code = call.parameters["code"]
-            Codes[code]
+            CodesCatalog[code]
                ?.let { call.respond(it) }
                ?: throw NotFoundException("Code $code not found")
          }
