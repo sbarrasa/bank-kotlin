@@ -3,7 +3,7 @@ package com.sbarrasa.cuit
 import kotlinx.serialization.Serializable
 
 
-object EntityCodeMap : Map<String, EntityCodeMap.Info> by mapOf(
+object EntityCodes : Map<String, EntityCodes.Info> by mapOf(
    "20" to Info(EntityType.FISICA, "Persona física (masculino)"),
    "23" to Info(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
    "24" to Info(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),

@@ -9,11 +9,11 @@ value class Cuit(val value: String) {
    val document: String get() = value.substring(2, 10)
    val vd: String get() = value.substring(10, 11)
 
-   val entityType: EntityType? get() = EntityCodeMap[entityCode]?.entityType
+   val entityType: EntityType? get() = EntityCodes[entityCode]?.entityType
 
    init {
       validateDigits(value, 11, "CUIT")
-      EntityCodeMap.validate(entityCode)
+      EntityCodes.validate(entityCode)
       VerificationDigit.validate(value)
    }
 
