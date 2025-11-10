@@ -1,19 +1,18 @@
 package com.sbarrasa.cuit
 
-import com.sbarrasa.id.IdDescMap
 import kotlinx.serialization.Serializable
 
 
-object EntityCodeMap : IdDescMap,  Map<String, EntityCodeMap.Data> by mapOf(
-   "20" to Data(EntityType.FISICA, "Persona física (masculino)"),
-   "23" to Data(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
-   "24" to Data(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
-   "25" to Data(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
-   "26" to Data(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
-   "27" to Data(EntityType.FISICA, "Persona física (femenino)"),
-   "30" to Data(EntityType.JURIDICA, "Persona jurídica (empresa o sociedad)"),
-   "33" to Data(EntityType.JURIDICA, "Persona jurídica (empresa o sociedad)"),
-   "34" to Data(EntityType.JURIDICA, "Persona jurídica (empresa o sociedad)")
+object EntityCodeMap : Map<String, EntityCodeMap.Info> by mapOf(
+   "20" to Info(EntityType.FISICA, "Persona física (masculino)"),
+   "23" to Info(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
+   "24" to Info(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
+   "25" to Info(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
+   "26" to Info(EntityType.FISICA, "Persona física (prefijo alternativo por duplicación)"),
+   "27" to Info(EntityType.FISICA, "Persona física (femenino)"),
+   "30" to Info(EntityType.JURIDICA, "Persona jurídica (empresa o sociedad)"),
+   "33" to Info(EntityType.JURIDICA, "Persona jurídica (empresa o sociedad)"),
+   "34" to Info(EntityType.JURIDICA, "Persona jurídica (empresa o sociedad)")
 ) {
 
    fun validate(entityCode: String?){
@@ -24,10 +23,8 @@ object EntityCodeMap : IdDescMap,  Map<String, EntityCodeMap.Data> by mapOf(
          throw FiscalException("$entityCode es un código de entidad inválido")
    }
    @Serializable
-   data class Data(
+   data class Info(
       val entityType: EntityType,
       val description: String
    )
-   override fun asMap() = this.mapValues { it.value.description }
-
 }

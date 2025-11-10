@@ -6,16 +6,18 @@ import com.bank.model.product.Currency
 import com.bank.model.product.factory.ProductFactory
 import com.sbarrasa.cuit.EntityCodeMap
 import com.sbarrasa.cuit.EntityType
+import com.sbarrasa.map.Catalog
 import com.sbarrasa.util.case.Case
-import com.sbarrasa.id.IdDescClassMap
 
-object CodesCatalog: IdDescClassMap (
-   keyCase = Case.SNAKE,
-   ProductFactory,
-      EntityType::class,
-      Branch::class,
-      Currency::class,
-      Gender::class,
-      EntityCodeMap,
-   )
+
+object CodesCatalog: Catalog(Case.SNAKE) {
+   init {
+      put(EntityType::class)
+      put(EntityCodeMap)
+      put(ProductFactory)
+      put(Gender::class)
+      put(Branch::class)
+      put(Currency::class)
+   }
+}
 

@@ -1,6 +1,5 @@
 package com.sbarrasa.util.case
 
-
 enum class Case {
    LOWER, UPPER, CAMEL, SNAKE, PASCAL
 }
@@ -29,5 +28,4 @@ fun String.toSnakeCase(): String =
    replace(Regex("([a-z])([A-Z])"), "$1_$2")
       .replace(Regex("([A-Z])([A-Z][a-z])"), "$1_$2")
       .lowercase()
-
 

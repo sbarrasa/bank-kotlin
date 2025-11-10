@@ -2,10 +2,9 @@ package com.bank.model.product.factory
 
 import com.bank.model.product.Product
 import com.bank.model.product.ProductHeader
-import com.sbarrasa.id.IdDescMap
+import com.sbarrasa.map.Mappeable
 
-
-object ProductFactory : IdDescMap {
+object ProductFactory: Mappeable<String, String> {
    private val creators = mutableMapOf<String, () -> Product>()
 
    fun <T : Product> register(
