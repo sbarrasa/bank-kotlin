@@ -31,11 +31,6 @@ class CustomerRoutes(private val customerRepository: CustomerRepository) {
             val id = call.requireId()
             call.respond(customerRepository.get(id))
          }
-         post {
-            val customerRequest = call.receive<Customer>()
-            val customerCreate = customerRepository.add(customerRequest)
-            call.respond(customerCreate)
-         }
 
          put("/") {
             call.requireId()
@@ -45,6 +40,12 @@ class CustomerRoutes(private val customerRepository: CustomerRepository) {
             val id = call.requireId()
             val customerRequest = call.receive<Customer>()
             call.respond(customerRepository.update(id, customerRequest))
+         }
+
+         post {
+            val customerRequest = call.receive<Customer>()
+            val customerCreate = customerRepository.add(customerRequest)
+            call.respond(customerCreate)
          }
 
          delete("/") {
