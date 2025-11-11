@@ -1,4 +1,6 @@
-package com.sbarrasa.cuit
+package com.sbarrasa.fiscal.cuit
+
+import com.sbarrasa.fiscal.FiscalException
 
 object VerificationDigit {
    private val weights = listOf(5, 4, 3, 2, 7, 6, 5, 4, 3, 2)

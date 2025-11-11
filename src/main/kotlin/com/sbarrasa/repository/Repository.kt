@@ -1,6 +1,6 @@
 package com.sbarrasa.repository
 
-import com.sbarrasa.id.Id
+import com.sbarrasa.util.id.Id
 
 interface Repository<I, T : Id<I>> {
    fun getAll(): List<T>

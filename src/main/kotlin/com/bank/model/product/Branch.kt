@@ -1,6 +1,6 @@
 package com.bank.model.product
 
-import com.sbarrasa.id.Desc
+import com.sbarrasa.util.id.Desc
 
 
 enum class Branch(override val description: String) : Desc {

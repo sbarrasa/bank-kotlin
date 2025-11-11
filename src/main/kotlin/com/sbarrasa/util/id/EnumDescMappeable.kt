@@ -1,6 +1,6 @@
-package com.sbarrasa.id
+package com.sbarrasa.util.id
 
-import com.sbarrasa.map.Mappeable
+import com.sbarrasa.util.map.Mappeable
 import kotlin.reflect.KClass
 
 class EnumDescMappeable<E>(val enumClass: KClass<E>): Mappeable<E, String> where E : Enum<E>, E : Desc {

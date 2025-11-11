@@ -1,6 +1,6 @@
 package com.bank.repository
 
-import com.sbarrasa.cuit.Cuit
+import com.sbarrasa.fiscal.cuit.Cuit
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID

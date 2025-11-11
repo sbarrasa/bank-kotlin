@@ -1,5 +1,6 @@
-package com.sbarrasa.cuit
+package com.sbarrasa.fiscal.cuit
 
+import com.sbarrasa.fiscal.FiscalException
 import kotlinx.serialization.Serializable
 
 

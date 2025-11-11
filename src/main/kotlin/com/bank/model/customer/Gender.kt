@@ -1,6 +1,6 @@
 package com.bank.model.customer
 
-import com.sbarrasa.id.Desc
+import com.sbarrasa.util.id.Desc
 
 
 enum class Gender(override val description: String) : Desc {

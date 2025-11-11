@@ -1,7 +1,7 @@
-package com.sbarrasa.map
+package com.sbarrasa.util.map
 
-import com.sbarrasa.id.Desc
-import com.sbarrasa.id.EnumDescMappeable
+import com.sbarrasa.util.id.Desc
+import com.sbarrasa.util.id.EnumDescMappeable
 import com.sbarrasa.util.case.*
 import kotlin.reflect.KClass
 

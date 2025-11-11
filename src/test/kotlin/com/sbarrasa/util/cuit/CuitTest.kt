@@ -1,8 +1,8 @@
 package com.sbarrasa.util.cuit
 
-import com.sbarrasa.cuit.Cuit
-import com.sbarrasa.cuit.EntityType
-import com.sbarrasa.cuit.FiscalException
+import com.sbarrasa.fiscal.cuit.Cuit
+import com.sbarrasa.fiscal.cuit.EntityType
+import com.sbarrasa.fiscal.FiscalException
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith

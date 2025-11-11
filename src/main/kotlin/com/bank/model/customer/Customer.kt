@@ -1,7 +1,7 @@
 package com.bank.model.customer
 
-import com.sbarrasa.cuit.Cuit
-import com.sbarrasa.id.Id
+import com.sbarrasa.fiscal.cuit.Cuit
+import com.sbarrasa.util.id.Id
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 
