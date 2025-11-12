@@ -51,3 +51,9 @@ bin/
 /.idea/httpRequests/http-client.cookies
 /.idea/httpRequests/http-requests-log.http
 /.idea/workspace.xml
+/.idea/httpRequests/
+/.idea/
+/.idea/codeStyles/
+/.idea/runConfigurations/
+/.idea/compiler.xml
+/.idea/dataSources.xml

@@ -1,11 +1,10 @@
 package com.bank.routes
 
-import com.bank.modules.CodesCatalog
+import com.bank.config.CodesCatalog
 import io.ktor.server.application.*
 import io.ktor.server.plugins.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-
 
 object CodesRoutes {
    fun register(parent: Route) {
@@ -21,9 +20,8 @@ object CodesRoutes {
 
          get("/{code}") {
             val code = call.parameters["code"]
-            CodesCatalog[code]
-               ?.let { call.respond(it) }
-               ?: throw NotFoundException("Code $code not found")
+            val map = CodesCatalog[code] ?: throw NotFoundException("Code $code not found")
+            call.respond(map)
          }
       }
    }

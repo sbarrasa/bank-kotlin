@@ -1,4 +1,4 @@
-package com.bank.modules
+package com.bank.config
 
 import com.bank.model.customer.Gender
 import com.bank.model.product.Branch
@@ -14,7 +14,7 @@ object CodesCatalog: Catalog(Case.SNAKE) {
    init {
       put(EntityType::class)
       put(EntityCodes)
-      put(ProductFactory)
+      put("ProductTypes", ProductFactory.asMap())
       put(Gender::class)
       put(Branch::class)
       put(Currency::class)
