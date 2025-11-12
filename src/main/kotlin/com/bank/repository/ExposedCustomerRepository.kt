@@ -4,9 +4,9 @@ import com.bank.model.customer.Customer
 import com.sbarrasa.repository.exposed.ExposedRepository
 import com.sbarrasa.util.objectcopy.*
 
-class ExposedCustomerRepository :
+object ExposedCustomerRepository :
    CustomerRepository, ExposedRepository<Customer, CustomerEntity>(
    entityClass = CustomerEntity,
-   mapToDTO = { it.copyTo(Customer()) },
+   mapToDTO = { entity -> entity.copyTo(Customer()) },
    mapToEntity = { dto, entity -> dto.copyTo(entity) }
 )

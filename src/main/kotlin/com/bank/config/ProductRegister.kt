@@ -1,4 +1,4 @@
-package com.bank.modules
+package com.bank.config
 
 import com.bank.model.product.factory.ProductFactory
 import com.bank.model.product.types.CheckingAccount

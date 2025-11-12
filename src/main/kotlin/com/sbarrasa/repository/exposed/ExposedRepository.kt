@@ -9,9 +9,9 @@ import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.sql.transactions.transaction
 
 abstract class ExposedRepository<T : Id<Int?>, E : IntEntity>(
-   private val entityClass: EntityClass<Int, E>,
-   private val mapToDTO: (E) -> T,
-   private val mapToEntity: (T, E) -> E,
+   val entityClass: EntityClass<Int, E>,
+   val mapToDTO: (E) -> T,
+   val mapToEntity: (T, E) -> E,
 ) : Repository<Int?, T> {
 
    override fun getAll(): List<T> = transaction {
@@ -43,10 +43,8 @@ abstract class ExposedRepository<T : Id<Int?>, E : IntEntity>(
    }
 
    fun findById(id: Int?): E {
-      return entityClass.findById(
-         id
-            ?: throw IdRequiredException()
-      )
-         ?: throw EntityNotFoundException(id = id)
+      require(id!=null) { throw IdRequiredException() }
+
+      return entityClass.findById(id) ?: throw EntityNotFoundException(id)
    }
 }

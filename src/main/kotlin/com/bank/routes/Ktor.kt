@@ -1,7 +1,6 @@
-package com.bank.modules
+package com.bank.routes
 
-import com.bank.routes.CodesRoutes
-import com.bank.routes.CustomerRoutes
+import com.bank.repository.CustomerRepository
 import com.sbarrasa.repository.EntityNotFoundException
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
@@ -15,17 +14,19 @@ import io.ktor.server.plugins.callloging.*
 import org.slf4j.event.Level
 
 
-fun Application.module() {
+fun Application.initModules(repo: CustomerRepository) {
    configHTTP()
    configSerialization()
-   configRoutes()
+   routing {
+      CustomerRoutes(repo).register(this)
+      CodesRoutes.register(this)
+   }
    configLog()
 }
 
 internal fun Application.configLog() {
    install(CallLogging) {
-      level = Level.INFO
-      filter { call -> true }
+      level = Level.DEBUG
    }
 }
 
@@ -40,12 +41,6 @@ internal fun Application.configSerialization() {
    }
 }
 
-internal fun Application.configRoutes() {
-   routing {
-      CustomerRoutes(RepositoryFactory.create()).register(this)
-      CodesRoutes.register(this)
-   }
-}
 
 internal fun Application.configHTTP() {
    install(StatusPages) {
