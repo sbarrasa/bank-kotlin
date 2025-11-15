@@ -1,6 +1,6 @@
 package com.sbarrasa.fiscal.cuit
 
-import com.sbarrasa.util.id.Desc
+import com.sbarrasa.id.Desc
 
 
 enum class EntityType(override val description: String) : Desc {

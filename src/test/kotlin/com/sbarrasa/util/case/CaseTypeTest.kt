@@ -1,5 +1,10 @@
 package com.sbarrasa.util.case
 
+import com.sbarrasa.case.Case
+import com.sbarrasa.case.toCamelCase
+import com.sbarrasa.case.toCase
+import com.sbarrasa.case.toPascalCase
+import com.sbarrasa.case.toSnakeCase
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

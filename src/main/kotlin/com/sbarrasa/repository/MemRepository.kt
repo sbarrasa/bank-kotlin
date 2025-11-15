@@ -1,25 +1,25 @@
 package com.sbarrasa.repository
 
-import com.sbarrasa.util.id.Id
+import com.sbarrasa.id.Id
+import com.sbarrasa.id.generators.IdGen
 
-open class MemRepository<I : Any?, T : Id<I>>(
-   private val idGenerator: (() -> I)? = null,
+
+open class MemRepository<I : Any, T : Id<I?>>(
+   private val idGenerator: IdGen<I>? = null
 ) : Repository<I, T> {
-
-   val autoId: Boolean get() = idGenerator!=null
 
    protected val items = mutableMapOf<I, T>()
 
    override fun getAll(): List<T> = items.values.toList()
 
    override fun get(id: I): T = items[id]
-      ?: throw EntityNotFoundException(id = id!!)
+      ?: throw EntityNotFoundException(id = id)
 
    override fun add(dto: T): T {
-      if (autoId)
-         dto.id = idGenerator!!()
+      if (idGenerator!=null)
+         dto.id = idGenerator.next()
 
-      items[dto.id] = dto
+      items[dto.id!!] = dto
       return dto
    }
 
@@ -30,6 +30,6 @@ open class MemRepository<I : Any?, T : Id<I>>(
 
    override fun delete(id: I): T {
       return items.remove(id)
-         ?: throw EntityNotFoundException(id = id!!)
+         ?: throw EntityNotFoundException(id = id)
    }
 }

@@ -1,7 +1,5 @@
 package com.sbarrasa.id
 
-import com.sbarrasa.util.id.Desc
-import com.sbarrasa.util.id.EnumDescMappeable
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

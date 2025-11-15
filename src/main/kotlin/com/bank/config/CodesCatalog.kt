@@ -6,8 +6,8 @@ import com.bank.dto.product.Currency
 import com.bank.dto.product.factory.ProductFactory
 import com.sbarrasa.fiscal.cuit.EntityCodes
 import com.sbarrasa.fiscal.cuit.EntityType
-import com.sbarrasa.util.map.Catalog
-import com.sbarrasa.util.case.Case
+import com.sbarrasa.id.map.Catalog
+import com.sbarrasa.case.Case
 
 
 object CodesCatalog: Catalog(Case.SNAKE) {

@@ -1,4 +1,4 @@
-package com.sbarrasa.util.objectcopy
+package com.sbarrasa.objectcopy
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

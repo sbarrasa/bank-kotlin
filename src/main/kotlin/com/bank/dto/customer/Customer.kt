@@ -3,7 +3,7 @@ package com.bank.dto.customer
 import com.sbarrasa.fiscal.cuit.Cuit
 import com.sbarrasa.person.Name
 import com.sbarrasa.person.Nombrable
-import com.sbarrasa.util.id.Id
+import com.sbarrasa.id.Id
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 

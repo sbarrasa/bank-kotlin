@@ -4,7 +4,7 @@ import com.bank.dto.product.factory.ProductFactory
 import com.bank.repository.RepositoryFactory
 import com.bank.config.init
 import com.bank.routes.initModules
-import com.sbarrasa.util.args.get
+import com.sbarrasa.args.get
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 

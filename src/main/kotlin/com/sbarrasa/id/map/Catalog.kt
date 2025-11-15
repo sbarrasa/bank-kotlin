@@ -1,8 +1,9 @@
-package com.sbarrasa.util.map
+package com.sbarrasa.id.map
 
-import com.sbarrasa.util.id.Desc
-import com.sbarrasa.util.id.EnumDescMappeable
-import com.sbarrasa.util.case.*
+import com.sbarrasa.case.Case
+import com.sbarrasa.case.toCase
+import com.sbarrasa.id.Desc
+import com.sbarrasa.id.EnumDescMappeable
 import kotlin.reflect.KClass
 
 open class Catalog(val case: Case?) : LinkedHashMap<String, Map<String, String>>() {

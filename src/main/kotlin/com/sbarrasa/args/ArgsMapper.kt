@@ -1,6 +1,6 @@
-package com.sbarrasa.util.args
+package com.sbarrasa.args
 
-import com.sbarrasa.util.map.Mappeable
+import com.sbarrasa.id.map.Mappeable
 
 class ArgsMapper(
    val args: Array<String>,

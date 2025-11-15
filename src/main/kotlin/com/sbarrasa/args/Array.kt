@@ -1,4 +1,4 @@
-package com.sbarrasa.util.args
+package com.sbarrasa.args
 
 val Array<String>.asMap: Map<String, String>
    get() {

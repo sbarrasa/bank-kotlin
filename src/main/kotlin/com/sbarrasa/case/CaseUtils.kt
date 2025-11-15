@@ -1,4 +1,4 @@
-package com.sbarrasa.util.case
+package com.sbarrasa.case
 
 enum class Case {
    LOWER, UPPER, CAMEL, SNAKE, PASCAL

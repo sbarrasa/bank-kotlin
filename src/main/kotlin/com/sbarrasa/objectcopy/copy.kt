@@ -1,4 +1,4 @@
-package com.sbarrasa.util.objectcopy
+package com.sbarrasa.objectcopy
 
 import kotlin.collections.iterator
 import kotlin.reflect.KMutableProperty1

@@ -2,7 +2,7 @@ package com.bank.dto.product.factory
 
 import com.bank.dto.product.Product
 import com.bank.dto.product.ProductHeader
-import com.sbarrasa.util.map.Mappeable
+import com.sbarrasa.id.map.Mappeable
 
 object ProductFactory: Mappeable<String, String> {
    private val creators = mutableMapOf<String, () -> Product>()

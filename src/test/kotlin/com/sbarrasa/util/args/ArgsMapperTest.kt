@@ -1,8 +1,7 @@
-package com.sbarrasa.util
+package com.sbarrasa.util.args
 
-
-import com.sbarrasa.util.args.ArgsMapper
-import com.sbarrasa.util.args.asMap
+import com.sbarrasa.args.ArgsMapper
+import com.sbarrasa.args.asMap
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

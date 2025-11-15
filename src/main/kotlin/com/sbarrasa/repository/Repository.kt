@@ -1,8 +1,8 @@
 package com.sbarrasa.repository
 
-import com.sbarrasa.util.id.Id
+import com.sbarrasa.id.Id
 
-interface Repository<I, T : Id<I>> {
+interface Repository<I, T : Id<I?>> {
    fun getAll(): List<T>
    fun get(id: I): T
    fun add(dto: T): T
