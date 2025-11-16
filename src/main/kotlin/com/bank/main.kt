@@ -1,7 +1,7 @@
 package com.bank
 
+import com.bank.config.CustomerRepositoryFactory
 import com.bank.dto.product.factory.ProductFactory
-import com.bank.repository.RepositoryFactory
 import com.bank.config.init
 import com.bank.routes.initModules
 import com.sbarrasa.args.get
@@ -11,7 +11,7 @@ import io.ktor.server.netty.*
 fun main(args: Array<String>) {
    ProductFactory.init()
 
-   val repo = RepositoryFactory.get(args["repo"])
+   val repo = CustomerRepositoryFactory.get(args["repo"])
 
    val restServer = embeddedServer(
       factory = Netty,
