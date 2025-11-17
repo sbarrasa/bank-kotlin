@@ -6,6 +6,6 @@ import kotlinx.serialization.Serializable
 abstract class Product {
    abstract val type: ProductDescriptor
 
-   val isCreditProduct get() = this is CreditProduct
+   val isCredit get() = this is CreditProduct
    abstract fun fullDescription(): String
 }
