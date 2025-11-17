@@ -3,17 +3,12 @@ package com.bank.product.structure
 import kotlinx.serialization.Serializable
 
 @Serializable
-abstract class Product: ProductDescriptor by Companion {
+abstract class Product: ProductDescriptor {
+   abstract val descriptor: ProductDescriptor
 
-   companion object: ProductDescriptor {
-      override var id: String
-         get() = throw NotImplementedError("id not implemented")
-         set(_) {}
-      override val description: String
-         get() = throw NotImplementedError("description not implemented")
+   override val id get() = descriptor.id
 
-   }
-
+   override val description get() = descriptor.description
 
    val isCreditProduct get() = this is CreditProduct
    abstract fun fullDescription(): String

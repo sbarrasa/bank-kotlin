@@ -1,5 +1,7 @@
-package com.bank.dto.product
+package com.product
 
+import com.bank.dto.product.CheckingAccount
+import com.bank.dto.product.CreditCard
 import com.bank.product.registry.ProductRegistry
 import com.bank.product.structure.Branch
 import com.bank.product.structure.Currency

@@ -16,10 +16,11 @@ open class MemRepository<I : Any, T : Id<I?>>(
       ?: throw EntityNotFoundException(id = id)
 
    override fun add(dto: T): T {
+      var id = dto.id
       if (idGenerator!=null)
-         dto.id = idGenerator.next()
+         id = idGenerator.next()
 
-      items[dto.id!!] = dto
+      items[id!!] = dto
       return dto
    }
 

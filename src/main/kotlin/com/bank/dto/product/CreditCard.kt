@@ -17,10 +17,12 @@ data class CreditCard(
    override var creditLimit: Double,
    val tier: String
 ) : Card(), CreditProduct {
+   override val descriptor: ProductDescriptor
+      get() = Companion
 
    companion object: ProductDescriptor {
       const val type = "TC"
-      override var id = type
+      override val id = type
       override val description = "Tarjeta de crédito"
    }
 

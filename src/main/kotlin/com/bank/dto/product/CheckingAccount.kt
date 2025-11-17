@@ -14,10 +14,12 @@ data class CheckingAccount(
    override val currency: Currency,
    override val creditLimit: Double
 ) : Account(), CreditProduct {
+   override val descriptor: ProductDescriptor
+      get() = Companion
 
    companion object: ProductDescriptor {
       const val type = "CC"
-      override var id = type
+      override val id = type
       override val description = "Cuenta corriente"
    }
 }
