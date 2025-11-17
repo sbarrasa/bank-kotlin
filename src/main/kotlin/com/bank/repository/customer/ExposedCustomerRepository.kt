@@ -1,4 +1,4 @@
-package com.bank.repository
+package com.bank.repository.customer
 
 import com.bank.dto.customer.Customer
 import com.sbarrasa.fiscal.cuit.Cuit
@@ -7,7 +7,8 @@ import com.sbarrasa.repository.exposed.ExposedRepository
 
 object ExposedCustomerRepository :
    CustomerRepository, ExposedRepository<Customer, CustomerEntity>(
-   entityClass = CustomerEntity) {
+   entityClass = CustomerEntity
+) {
 
    override fun mapToDTO(entity: CustomerEntity) =
       Customer(
