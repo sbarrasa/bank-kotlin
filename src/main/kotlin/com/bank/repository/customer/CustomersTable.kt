@@ -1,4 +1,4 @@
-package com.bank.repository
+package com.bank.repository.customer
 
 import com.bank.dto.customer.Gender
 import org.jetbrains.exposed.dao.id.IntIdTable
@@ -10,4 +10,3 @@ object CustomersTable : IntIdTable("customers") {
    val birthDay = date("birth_day").nullable()
    val gender = enumerationByName("gender", 1, Gender::class).nullable()
 }
-

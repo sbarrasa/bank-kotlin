@@ -2,7 +2,7 @@ package com.bank.routes
 
 import com.bank.dto.customer.Customer
 import com.bank.dto.customer.CustomerInfo
-import com.bank.repository.CustomerRepository
+import com.bank.repository.customer.CustomerRepository
 import io.ktor.server.application.*
 import io.ktor.server.plugins.*
 import io.ktor.server.request.*

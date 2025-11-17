@@ -1,4 +1,4 @@
-package com.bank.repository
+package com.bank.repository.customer
 
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass

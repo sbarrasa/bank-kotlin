@@ -1,6 +1,6 @@
 package com.bank.routes
 
-import com.bank.repository.CustomerRepository
+import com.bank.repository.customer.CustomerRepository
 import com.sbarrasa.repository.EntityNotFoundException
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
