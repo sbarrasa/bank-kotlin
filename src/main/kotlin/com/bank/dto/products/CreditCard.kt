@@ -23,10 +23,7 @@ data class CreditCard(
       override val description = "Tarjeta de crédito"
    }
 
-   override val id: String
-      get() = number
-
    override val description: String
-      get() =  "${Companion.description} ${branch.description} $tier"
+      get() =  "${super.description} $tier"
 
 }

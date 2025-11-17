@@ -56,6 +56,8 @@ class ProductTypeTest {
       assertTrue(product is CreditCard)
       assertEquals(Branch.VISA, product.branch)
       assertEquals(5000000.0, product.creditLimit)
+      assertEquals("Tarjeta de crédito VISA Black", product.description)
+
 
    }
 
@@ -68,6 +70,24 @@ class ProductTypeTest {
 
       val e = assertFailsWith<MissingFieldException> { ProductTypes.json.decodeFromMap<Product>(map) }
       assertContains(e.message?:"","branch")
+   }
+
+   @Test
+   fun compareDescriptor() {
+      val map = mapOf(
+         "id" to "TC",
+         "branch" to "VISA",
+         "number" to "4111111111111111",
+         "expirationDate" to "2025-12-31",
+         "creditLimit" to "5000000.00",
+         "tier" to "Black"
+      )
+
+      val product = ProductTypes.json.decodeFromMap<Product>(map)
+
+      assertEquals(CreditCard::class, product::class)
+      assertEquals(CreditCard.id, product.descriptor?.id)
+      assertEquals(CreditCard.description, product.descriptor?.description)
 
 
    }

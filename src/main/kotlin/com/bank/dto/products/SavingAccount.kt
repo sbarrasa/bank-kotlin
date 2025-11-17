@@ -17,11 +17,4 @@ data class SavingAccount(
       override val id get() = TYPE
       override val description = "Caja de ahorro"
    }
-
-   override val id: String
-      get() = cbu
-
-   override val description: String
-      get() = "${Companion.description} en ${currency.description}"
-
 }

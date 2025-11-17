@@ -20,11 +20,4 @@ data class DebitCard(
       override val id get() = TYPE
       override val description = "Tarjeta de débito"
    }
-
-   override val id: String
-      get() = number
-
-   override val description: String
-      get() =  "${Companion.description} ${branch.description}"
-
 }
