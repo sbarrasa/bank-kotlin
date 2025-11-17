@@ -8,18 +8,18 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-@SerialName(DebitCard.type)
+@SerialName(DebitCard.TYPE)
 data class DebitCard(
    override val branch: Branch,
    override val number: String,
    override val expirationDate: LocalDate
 ) : Card() {
-   override val descriptor: ProductDescriptor
+   override val type: ProductDescriptor
       get() = Companion
 
    companion object: ProductDescriptor {
-      const val type = "TD"
-      override val id = type
+      const val TYPE = "TD"
+      override val id = TYPE
       override val description = "Tarjeta de débito"
    }
 }
