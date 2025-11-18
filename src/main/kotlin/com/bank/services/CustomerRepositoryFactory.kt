@@ -1,5 +1,6 @@
 package com.bank.services
 
+import com.bank.repository.customer.CustomerProductsTable
 import com.bank.repository.customer.CustomerRepository
 import com.bank.repository.customer.CustomersTable
 import com.bank.repository.customer.ExposedCustomerRepository
@@ -11,7 +12,7 @@ object CustomerRepositoryFactory: RegistryFactory<String, CustomerRepository>() 
       register("MEM") { MemCustomerRepository }
 
       register("EXPOSED") {
-         DBClient.init(CustomersTable)
+         DBClient.init(CustomersTable, CustomerProductsTable)
          ExposedCustomerRepository
       }
    }

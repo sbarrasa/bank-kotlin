@@ -22,7 +22,7 @@ object DBClient {
 
       transaction {
          SchemaUtils.create(*tables)
-         log.info("Tables created")
+         log.info("Tables schemas updated")
       }
    }
 }
