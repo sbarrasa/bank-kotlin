@@ -3,6 +3,7 @@ package com.bank.routes
 import com.bank.repository.customer.CustomerRepository
 import com.bank.services.ProductTypes
 import com.sbarrasa.repository.EntityNotFoundException
+import com.sbarrasa.serialization.modules.polymorphic
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -12,6 +13,9 @@ import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.plugins.callloging.*
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
 import org.slf4j.event.Level
 
 private val logger = org.slf4j.LoggerFactory.getLogger("Application")
@@ -33,9 +37,19 @@ internal fun Application.configLog() {
    }
 }
 
+@OptIn(ExperimentalSerializationApi::class)
 internal fun Application.configSerialization() {
    install(ContentNegotiation) {
-      json(ProductTypes.json)
+      json(
+         Json {
+            serializersModule = SerializersModule {
+               polymorphic(ProductTypes)
+            }
+            classDiscriminator = "type"
+            ignoreUnknownKeys = true
+            explicitNulls = false
+         }
+      )
    }
    routing {
       get("/json/test") {

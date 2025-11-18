@@ -2,15 +2,25 @@ package com.bank.services
 
 import com.bank.model.products.CheckingAccount
 import com.bank.model.products.CreditCard
-import com.sbarrasa.registry.decodeFromMap
+import com.sbarrasa.serialization.json.decodeFromMap
 import com.bank.model.products.structure.Branch
 import com.bank.model.products.structure.Currency
 import com.bank.model.products.structure.Product
+import com.sbarrasa.serialization.modules.polymorphic
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.MissingFieldException
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
 import kotlin.test.*
 
 class ProductTypesTest {
+   val json = Json {
+      serializersModule = SerializersModule {
+         polymorphic(ProductTypes)
+      }
+      classDiscriminator = "id"
+      ignoreUnknownKeys = true
+   }
 
    @Test
    fun asMap() {
@@ -39,7 +49,7 @@ class ProductTypesTest {
           }
           """.trimIndent()
 
-      val product = ProductTypes.json.decodeFromString<Product>(jsonString)
+      val product = json.decodeFromString<Product>(jsonString)
 
       assertTrue(product is CheckingAccount)
       assertEquals("1234567890123456789012", product.cbu)
@@ -58,7 +68,7 @@ class ProductTypesTest {
          "tier" to "Black"
       )
 
-      val product = ProductTypes.json.decodeFromMap<Product>(map)
+      val product = json.decodeFromMap<Product>(map)
 
       assertTrue(product is CreditCard)
       assertEquals(Branch.VISA, product.branch)
@@ -75,7 +85,7 @@ class ProductTypesTest {
          "id" to "TC",
       )
 
-      val e = assertFailsWith<MissingFieldException> { ProductTypes.json.decodeFromMap<Product>(map) }
+      val e = assertFailsWith<MissingFieldException> { json.decodeFromMap<Product>(map) }
       assertContains(e.message?:"","branch")
    }
 
@@ -90,12 +100,11 @@ class ProductTypesTest {
          "tier" to "Black"
       )
 
-      val product = ProductTypes.json.decodeFromMap<Product>(map)
+      val product = json.decodeFromMap<Product>(map)
 
       assertEquals(CreditCard::class, product::class)
       assertEquals(CreditCard.id, product.descriptor?.id)
       assertEquals(CreditCard.description, product.descriptor?.description)
-
 
    }
 }
