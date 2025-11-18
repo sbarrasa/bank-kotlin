@@ -3,10 +3,10 @@ package com.bank.services
 import com.bank.model.products.CheckingAccount
 import com.bank.model.products.CreditCard
 import com.sbarrasa.serialization.json.decodeFromMap
-import com.bank.model.products.structure.CardBranch
+import com.bank.model.products.structure.CardBrand
 import com.bank.model.products.structure.Currency
 import com.bank.model.products.structure.Product
-import com.sbarrasa.legal.cbu.*
+import com.sbarrasa.idlegal.cbu.*
 import com.sbarrasa.serialization.modules.polymorphic
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.MissingFieldException
@@ -72,7 +72,7 @@ class ProductTypesTest {
       val product = json.decodeFromMap<Product>(map)
 
       assertTrue(product is CreditCard)
-      assertEquals(CardBranch.VISA, product.branch)
+      assertEquals(CardBrand.VISA, product.brand)
       assertEquals(5000000.0, product.creditLimit)
       assertEquals("Tarjeta de crédito VISA Black", product.description)
 

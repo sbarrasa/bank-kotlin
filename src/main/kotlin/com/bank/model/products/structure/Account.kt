@@ -1,6 +1,6 @@
 package com.bank.model.products.structure
 
-import com.sbarrasa.legal.cbu.CBU
+import com.sbarrasa.idlegal.cbu.CBU
 import kotlinx.serialization.Serializable
 
 @Serializable

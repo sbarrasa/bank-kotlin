@@ -1,6 +1,6 @@
-package com.sbarrasa.legal.cbu
+package com.sbarrasa.idlegal.cbu
 
-import com.sbarrasa.legal.LegalException
+import com.sbarrasa.idlegal.LegalException
 import kotlin.test.*
 
 class CBUTest {

@@ -1,4 +1,4 @@
-package com.sbarrasa.legal.cuit
+package com.sbarrasa.idlegal.cuit
 
 import com.sbarrasa.id.Desc
 

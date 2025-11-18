@@ -1,4 +1,4 @@
-package com.sbarrasa.legal
+package com.sbarrasa.idlegal
 
 class CheckDigitValidator(
    val name: String = "",

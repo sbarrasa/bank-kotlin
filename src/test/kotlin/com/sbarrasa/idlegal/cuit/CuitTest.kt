@@ -1,8 +1,8 @@
-package com.sbarrasa.legal.cuit
+package com.sbarrasa.idlegal.cuit
 
-import com.sbarrasa.legal.CheckDigitValidator
+import com.sbarrasa.idlegal.CheckDigitValidator
 import kotlin.test.*
-import com.sbarrasa.legal.LegalException
+import com.sbarrasa.idlegal.LegalException
 
 
 class CuitTest {

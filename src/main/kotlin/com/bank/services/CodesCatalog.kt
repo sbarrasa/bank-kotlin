@@ -1,10 +1,10 @@
 package com.bank.services
 
 import com.bank.model.customer.Gender
-import com.bank.model.products.structure.CardBranch
+import com.bank.model.products.structure.CardBrand
 import com.bank.model.products.structure.Currency
-import com.sbarrasa.legal.cuit.CuitEntityCodes
-import com.sbarrasa.legal.cuit.LegalEntity
+import com.sbarrasa.idlegal.cuit.CuitEntityCodes
+import com.sbarrasa.idlegal.cuit.LegalEntity
 import com.sbarrasa.id.map.Catalog
 import com.sbarrasa.case.Case
 
@@ -16,7 +16,7 @@ object CodesCatalog: Catalog(Case.SNAKE) {
       put(CuitEntityCodes)
       put(ProductTypes)
       put(Gender::class)
-      put(CardBranch::class)
+      put(CardBrand::class)
       put(Currency::class)
    }
 }

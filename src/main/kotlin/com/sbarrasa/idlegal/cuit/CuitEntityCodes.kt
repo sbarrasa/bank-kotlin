@@ -1,4 +1,4 @@
-package com.sbarrasa.legal.cuit
+package com.sbarrasa.idlegal.cuit
 
 object CuitEntityCodes : Map<String, CuitEntityCodes.Info> by mapOf(
    "20" to Info(LegalEntity.FISICA, "Persona física (masculino)"),
