@@ -1,7 +1,5 @@
 package com.sbarrasa.legal.cuit
 
-import com.sbarrasa.legal.LegalException
-
 object CuitEntityCodes : Map<String, CuitEntityCodes.Info> by mapOf(
    "20" to Info(LegalEntity.FISICA, "Persona física (masculino)"),
    "23" to Info(LegalEntity.FISICA, "Persona física (prefijo alternativo por duplicación)"),
