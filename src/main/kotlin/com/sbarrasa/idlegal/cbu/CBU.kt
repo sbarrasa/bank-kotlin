@@ -1,7 +1,6 @@
 package com.sbarrasa.idlegal.cbu
 
-import com.sbarrasa.idlegal.CheckDigitValidator
-import com.sbarrasa.idlegal.LegalException
+import com.sbarrasa.idlegal.LegalIdException
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -22,44 +21,34 @@ value class CBU(val value: String) {
    }
 
    private fun validateLength() {
-      if (value.length != SIZE) throw LegalException(msg.LENGTH)
+      if (value.length != SIZE) throw LegalIdException(msg.INVALID_LENGTH)
    }
 
    private fun validateDigits() {
-      if (!value.all { it.isDigit() }) throw LegalException(msg.DIGITS)
+      if (!value.all { it.isDigit() }) throw LegalIdException(msg.DIGITS)
    }
 
    private fun validateEntityBranchDigit() {
       val digits = value.substring(0, 7).map { it.digitToInt() }
       val vd = value[7].digitToInt()
-      entityBranchValidator.validate(digits, vd)
+      BranchValidator.validate(digits, vd)
    }
 
    private fun validateAccountDigit() {
       val digits = value.substring(8, 21).map { it.digitToInt() }
       val vd = value[21].digitToInt()
-      accountValidator.validate(digits, vd)
+      AccountValidator.validate(digits, vd)
    }
 
    object msg {
-      var LENGTH = "CBU debe tener 22 dígitos"
+      var BRANCH = "Entidad/sucursal"
+      var ACCOUNT = "Número de cuenta"
+      var INVALID_LENGTH = "CBU debe tener 22 dígitos"
       var DIGITS = "CBU solo puede contener números"
    }
 
    companion object {
       var SIZE = 22
-
-      private val entityBranchValidator = CheckDigitValidator(
-         name = "Entidad bancaria y sucursal",
-         weights = listOf(7, 1, 3, 9, 7, 1, 3),
-         computeFinal = { sum -> (10 - sum % 10) % 10 }
-      )
-
-      private val accountValidator = CheckDigitValidator(
-         name = "Cuenta bancaria",
-         weights = listOf(3, 9, 7, 1, 3, 9, 7, 1, 3, 9, 7, 1, 3),
-         computeFinal = { sum -> (10 - sum % 10) % 10 }
-      )
    }
 
    override fun toString(): String = value

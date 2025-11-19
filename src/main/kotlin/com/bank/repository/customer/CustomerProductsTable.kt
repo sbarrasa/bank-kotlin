@@ -1,7 +1,8 @@
 package com.bank.repository.customer
 
-import com.bank.model.products.structure.CardBrand
 import com.bank.model.products.structure.Currency
+import com.sbarrasa.idlegal.card.CardBrand
+import com.sbarrasa.idlegal.cbu.CBU
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.kotlin.datetime.date
 
@@ -9,7 +10,7 @@ import org.jetbrains.exposed.sql.kotlin.datetime.date
 object CustomerProductsTable : IntIdTable("customer_products") {
    val customerId = integer("customer_id").references(CustomersTable.id)
    val productType = varchar("product_type", 2)
-   val cbu = varchar("cbu", 22).nullable()
+   val cbu = varchar("cbu", CBU.SIZE).nullable()
    val currency = enumerationByName("currency", 3, Currency::class).nullable()
    val creditLimit = double("credit_limit").nullable()
    val cardBrand = enumerationByName("card_brand", 4, CardBrand::class).nullable()

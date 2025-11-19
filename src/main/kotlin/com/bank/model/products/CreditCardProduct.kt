@@ -1,22 +1,21 @@
 package com.bank.model.products
 
-import com.bank.model.products.structure.CardBrand
-import com.bank.model.products.structure.Card
+import com.bank.model.products.structure.CardProduct
 import com.bank.model.products.structure.CreditProduct
 import com.bank.model.products.structure.ProductDescriptor
+import com.sbarrasa.idlegal.card.CardNumber
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-@SerialName(CreditCard.TYPE)
-data class CreditCard(
-   override val brand: CardBrand,
-   override val number: String,
+@SerialName(CreditCardProduct.TYPE)
+data class CreditCardProduct(
+   override val cardNumber: CardNumber,
    override var expirationDate: LocalDate,
    override var creditLimit: Double,
    val tier: String
-) : Card(), CreditProduct {
+) : CardProduct(), CreditProduct {
    companion object: ProductDescriptor {
       const val TYPE = "TC"
       override val id get() = TYPE

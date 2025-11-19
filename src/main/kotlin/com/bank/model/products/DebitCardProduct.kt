@@ -1,19 +1,18 @@
 package com.bank.model.products
 
-import com.bank.model.products.structure.CardBrand
-import com.bank.model.products.structure.Card
+import com.bank.model.products.structure.CardProduct
 import com.bank.model.products.structure.ProductDescriptor
+import com.sbarrasa.idlegal.card.CardNumber
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-@SerialName(DebitCard.TYPE)
-data class DebitCard(
-   override val brand: CardBrand,
-   override val number: String,
+@SerialName(DebitCardProduct.TYPE)
+data class DebitCardProduct(
+   override val cardNumber: CardNumber,
    override val expirationDate: LocalDate
-) : Card() {
+) : CardProduct() {
 
    companion object: ProductDescriptor {
       const val TYPE = "TD"

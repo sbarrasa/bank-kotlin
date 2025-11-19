@@ -1,18 +1,18 @@
 package com.bank.model.products.structure
 
+import com.sbarrasa.idlegal.card.CardNumber
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 
 @Serializable
-abstract class Card : Product() {
-   abstract val brand: CardBrand
-   abstract val number: String
+abstract class CardProduct : Product() {
+    abstract val cardNumber: CardNumber
    abstract val expirationDate: LocalDate
 
    override val id: String
-      get() = number
+      get() = cardNumber.value
 
    override val description: String
-      get() =  "${descriptor?.description} ${brand.description}"
+      get() =  "${descriptor?.description} ${cardNumber.brand?.description}"
 
 }

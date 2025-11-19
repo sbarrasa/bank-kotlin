@@ -1,18 +1,28 @@
 package com.sbarrasa.idlegal
 
-class CheckDigitValidator(
-   val name: String = "",
-   private val weights: List<Int>,
-   private val computeFinal: (Int) -> Int
-) {
-   fun compute(digits: List<Int>): Int {
-      val sum = digits.zip(weights) { d, w -> d * w }.sum()
-      return computeFinal(sum)
+
+abstract class CheckDigitValidator(val name: String) {
+
+   abstract fun compute(digits: List<Int>): Int
+
+   fun splitDigits(fullNumber: String): Pair<List<Int>, Int> {
+      val digits = fullNumber.dropLast(1).map { it.digitToInt() }
+      val check = fullNumber.last().digitToInt()
+      return digits to check
+   }
+
+   fun compute(digits: String): Int {
+      return compute(digits.map { it.digitToInt() })
+   }
+
+   fun validate(fullNumber: String) {
+      val (digits, vd) = splitDigits(fullNumber)
+      validate(digits, vd)
    }
 
    fun validate(digits: List<Int>, vd: Int) {
       val expected = compute(digits)
-      if(expected != vd) throw LegalException("${msg.INVALID_CHECK_DIGIT} ($name)")
+      if (expected != vd) throw LegalIdException("${msg.INVALID_CHECK_DIGIT} ($name)")
    }
 
    object msg {

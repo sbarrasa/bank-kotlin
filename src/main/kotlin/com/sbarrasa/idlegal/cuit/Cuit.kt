@@ -1,7 +1,7 @@
 package com.sbarrasa.idlegal.cuit
 
-import com.sbarrasa.idlegal.CheckDigitValidator
-import com.sbarrasa.idlegal.LegalException
+import com.sbarrasa.id.Desc
+import com.sbarrasa.idlegal.LegalIdException
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -10,9 +10,9 @@ value class Cuit(val value: String) {
 
    val entityCode: String get() = value.substring(0, 2)
    val document: String get() = value.substring(2, 10)
-   val check: String get() = value.substring(10, 11)
+   val check: Char get() = value.substring(10, 11)[0]
 
-   val legalEntity: LegalEntity? get() = CuitEntityCodes[entityCode]?.legalEntity
+   val entityType: EntityType? get() = CuitEntityCodes[entityCode]?.entityType
 
    init {
       validateLength()
@@ -22,44 +22,37 @@ value class Cuit(val value: String) {
    }
 
    private fun validateLength() {
-      if (value.length != SIZE) throw LegalException(msg.LENGTH)
+      if (value.length != SIZE) throw LegalIdException(msg.INVALID_LENGTH)
    }
 
    private fun validateDigits() {
-      if (!value.all { it.isDigit() }) throw LegalException(msg.DIGITS)
+      if (!value.all { it.isDigit() }) throw LegalIdException(msg.DIGITS)
    }
 
    private fun validateEntityCode() {
-      if (!CuitEntityCodes.contains(entityCode)) throw LegalException(msg.ENTITY_CODE)
+      if (!CuitEntityCodes.contains(entityCode)) throw LegalIdException(msg.INVALID_ENTITY_CODE)
    }
 
    private fun validateCheckDigit() {
-      val digits = value.map { it.digitToInt() }
-      val vdInt = check.toInt()
-      checkDigitValidator.validate(digits, vdInt)
+      CuitCheckDigitValidator.validate(value)
    }
 
    object msg {
-      var LENGTH = "CUIT debe tener $SIZE dígitos numéricos"
+      var CUIT_CUIL = "CUIT/CUIL"
+      var INVALID_LENGTH = "CUIT debe tener $SIZE dígitos numéricos"
       var DIGITS = "CUIT solo puede contener números"
-      var ENTITY_CODE = "Código de entidad inválido"
+      var INVALID_ENTITY_CODE = "Código de entidad inválido"
    }
 
    companion object {
       var SIZE = 11
-
-      var checkDigitValidator = CheckDigitValidator(
-         name = "CUIT",
-         weights = listOf(5, 4, 3, 2, 7, 6, 5, 4, 3, 2),
-         computeFinal = { sum ->
-            when (val mod = sum % 11) {
-               0 -> 0
-               1 -> 9
-               else -> 11 - mod
-            }
-         }
-      )
    }
 
+   fun formated() = "$entityCode-$document-$check"
    override fun toString(): String = value
+
+   enum class EntityType(override val description: String) : Desc {
+      PERSON("persona física"),
+      COMPANY("persona juridica");
+   }
 }

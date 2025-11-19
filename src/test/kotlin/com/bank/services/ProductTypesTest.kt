@@ -1,11 +1,11 @@
 package com.bank.services
 
 import com.bank.model.products.CheckingAccount
-import com.bank.model.products.CreditCard
+import com.bank.model.products.CreditCardProduct
 import com.sbarrasa.serialization.json.decodeFromMap
-import com.bank.model.products.structure.CardBrand
 import com.bank.model.products.structure.Currency
 import com.bank.model.products.structure.Product
+import com.sbarrasa.idlegal.card.CardBrand
 import com.sbarrasa.idlegal.cbu.*
 import com.sbarrasa.serialization.modules.polymorphic
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -62,8 +62,7 @@ class ProductTypesTest {
    fun createFromMap() {
       val map = mapOf(
          "id" to "TC",
-         "branch" to "VISA",
-         "number" to "4111111111111111",
+         "cardNumber" to "4111111111111111",
          "expirationDate" to "2025-12-31",
          "creditLimit" to "5000000.00",
          "tier" to "Black"
@@ -71,8 +70,8 @@ class ProductTypesTest {
 
       val product = json.decodeFromMap<Product>(map)
 
-      assertTrue(product is CreditCard)
-      assertEquals(CardBrand.VISA, product.brand)
+      assertTrue(product is CreditCardProduct)
+      assertEquals(CardBrand.VISA, product.cardNumber.brand)
       assertEquals(5000000.0, product.creditLimit)
       assertEquals("Tarjeta de crédito VISA Black", product.description)
 
@@ -87,15 +86,14 @@ class ProductTypesTest {
       )
 
       val e = assertFailsWith<MissingFieldException> { json.decodeFromMap<Product>(map) }
-      assertContains(e.message?:"","branch")
+      assertContains(e.message?:"","cardNumber")
    }
 
    @Test
    fun compareDescriptor() {
       val map = mapOf(
          "id" to "TC",
-         "branch" to "VISA",
-         "number" to "4111111111111111",
+         "cardNumber" to "4111111111111111",
          "expirationDate" to "2025-12-31",
          "creditLimit" to "5000000.00",
          "tier" to "Black"
@@ -103,9 +101,9 @@ class ProductTypesTest {
 
       val product = json.decodeFromMap<Product>(map)
 
-      assertEquals(CreditCard::class, product::class)
-      assertEquals(CreditCard.id, product.descriptor?.id)
-      assertEquals(CreditCard.description, product.descriptor?.description)
+      assertEquals(CreditCardProduct::class, product::class)
+      assertEquals(CreditCardProduct.id, product.descriptor?.id)
+      assertEquals(CreditCardProduct.description, product.descriptor?.description)
 
    }
 }

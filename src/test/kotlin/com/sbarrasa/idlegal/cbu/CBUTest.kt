@@ -1,6 +1,6 @@
 package com.sbarrasa.idlegal.cbu
 
-import com.sbarrasa.idlegal.LegalException
+import com.sbarrasa.idlegal.LegalIdException
 import kotlin.test.*
 
 class CBUTest {
@@ -15,13 +15,13 @@ class CBUTest {
 
    @Test
    fun invalidLength() {
-      val e = assertFailsWith<LegalException> { CBU("011062713006270145810") }
-      assertContains(e.message ?: "", CBU.msg.LENGTH)
+      val e = assertFailsWith<LegalIdException> { CBU("011062713006270145810") }
+      assertContains(e.message ?: "", CBU.msg.INVALID_LENGTH)
    }
 
    @Test
    fun nonDigitCharacters() {
-      val e = assertFailsWith<LegalException> { CBU("0110627A30062701458101") }
+      val e = assertFailsWith<LegalIdException> { CBU("0110627A30062701458101") }
       assertContains(e.message ?: "", CBU.msg.DIGITS)
    }
 
@@ -29,14 +29,14 @@ class CBUTest {
    fun invalidEntityBranchDigit() {
       // Modifica el dígito verificador de entidad/sucursal
       val cbuString = "0110627131062701458101"
-      assertFailsWith<LegalException> { CBU(cbuString) }
+      assertFailsWith<LegalIdException> { CBU(cbuString) }
    }
 
    @Test
    fun invalidAccountDigit() {
       // Modifica el dígito verificador de cuenta
       val cbuString = "0110627130062701458102"
-      assertFailsWith<LegalException> { CBU(cbuString) }
+      assertFailsWith<LegalIdException> { CBU(cbuString) }
    }
 
    @Test

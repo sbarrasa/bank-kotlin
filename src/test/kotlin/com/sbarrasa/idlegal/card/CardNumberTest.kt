@@ -1,0 +1,59 @@
+package com.sbarrasa.idlegal.card
+
+import com.sbarrasa.idlegal.LegalIdException
+import kotlin.test.Test
+import kotlin.test.assertContains
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
+
+class CardNumberTest {
+
+   @Test
+   fun brandMaestro() {
+      val cn = CardNumber.of("5010410012 04257 014")
+      assertEquals(CardBrand.MAESTRO, cn.brand)
+   }
+
+   @Test
+   fun brandMasterCard() {
+      val cn = CardNumber.of("5366 5000 0778 0600")
+      assertEquals(CardBrand.MC, cn.brand)
+   }
+
+   @Test
+   fun brandMasterDebito() {
+      val cn = CardNumber.of("5273 4135 9148 2652")
+      assertEquals(CardBrand.MC, cn.brand)
+   }
+
+   @Test
+   fun brandVISA() {
+      val cn = CardNumber.of("4338 2600 0327 3096")
+      assertEquals(CardBrand.VISA, cn.brand)
+   }
+
+   @Test
+   fun invalidLength() {
+      val e = assertFailsWith<LegalIdException> { CardNumber("123") }
+      assertContains( e.message ?: "", CardNumber.msg.LENGTH)
+   }
+
+   @Test
+   fun invalidDigit() {
+      assertFailsWith<LegalIdException> { CardNumber("41111111111111A1") }
+   }
+
+   @Test
+   fun invalidCheckDigit() {
+      assertFailsWith<LegalIdException> { CardNumber("4111111111111112") }
+   }
+
+   @Test
+   fun unknownBin() {
+      val cn = CardNumber("7777777777777771")
+      assertNull(cn.brand)
+   }
+
+
+}

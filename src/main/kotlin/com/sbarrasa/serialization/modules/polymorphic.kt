@@ -8,6 +8,16 @@ import kotlinx.serialization.serializer
 import kotlin.reflect.KClass
 
 @OptIn(InternalSerializationApi::class)
+fun <B : Any> SerializersModuleBuilder.polymorphic(sealedClass: KClass<B>) {
+   polymorphic(sealedClass) {
+      sealedClass.sealedSubclasses.forEach { subclass ->
+         @Suppress("UNCHECKED_CAST")
+         subclass(subclass as KClass<B>, subclass.serializer())
+      }
+   }
+}
+
+@OptIn(InternalSerializationApi::class)
 fun <B: Any> SerializersModuleBuilder.polymorphic(classHierarchy: ClassHierarchy<B>) =
    polymorphic(classHierarchy.baseClass, classHierarchy.subClasses)
 

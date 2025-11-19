@@ -1,8 +1,8 @@
 package com.bank.services
 
 import com.bank.model.products.CheckingAccount
-import com.bank.model.products.CreditCard
-import com.bank.model.products.DebitCard
+import com.bank.model.products.CreditCardProduct
+import com.bank.model.products.DebitCardProduct
 import com.bank.model.products.SavingAccount
 import com.bank.model.products.structure.Product
 import com.bank.model.products.structure.ProductDescriptor
@@ -18,8 +18,8 @@ object ProductTypes:
       init {
          with(subClasses){
             add(CheckingAccount::class)
-            add(CreditCard::class)
-            add(DebitCard::class)
+            add(CreditCardProduct::class)
+            add(DebitCardProduct::class)
             add(SavingAccount::class)
          }
       }
