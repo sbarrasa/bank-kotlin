@@ -3,39 +3,13 @@ package com.sbarrasa.domain.person
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FullName(override val names: String,
-                    override val lastNames: String?=null,
-                    private val validate: Boolean = true
-): Nombrable{
+data class FullName(val names: GivenNames,
+                    val lastNames: LastNames?): NamesList{
 
-   init {
-      if (validate) {
-         NameUtils.validate(names)
-         if (lastNames != null)
-            NameUtils.validate(lastNames)
-      }
+   override val list get() = names.list + (lastNames?.list ?: emptyList())
 
+   override fun toString(): String {
+      return "$lastNames, $names"
    }
-
-   companion object{
-      fun from(legalName: String, validate: Boolean = true): FullName {
-         val parts = legalName.split(",")
-
-         return if(parts.size == 2)
-            FullName(names = parts[1].trim(), lastNames = parts[0].trim(), validate = validate)
-         else
-            FullName(names = legalName, validate = validate)
-      }
-   }
-   val nameList by lazy { names.split(" ")}
-
-   val lastNameList by lazy { lastNames?.split(" ") ?: emptyList() }
-
-   val fullNameList get() = nameList + lastNameList
-
-   val count: Int get() = fullNameList.size
-
-   operator fun get(index: Int) = fullNameList[index]
-
 
 }

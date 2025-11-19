@@ -2,7 +2,7 @@ package com.bank.repository.customer
 
 import com.bank.model.customer.Customer
 import com.sbarrasa.domain.cuit.Cuit
-import com.sbarrasa.domain.person.Name
+import com.sbarrasa.domain.person.GivenNames
 import com.sbarrasa.repository.exposed.ExposedRepository
 
 object ExposedCustomerRepository :
@@ -13,7 +13,7 @@ object ExposedCustomerRepository :
    override fun mapToDTO(entity: CustomerEntity) =
       Customer(
          id = entity.id.value,
-         legalName = Name(entity.legalName),
+         legalName = GivenNames(entity.legalName),
          cuit = Cuit(entity.cuit),
          birthDay = entity.birthDay,
          gender = entity.gender
