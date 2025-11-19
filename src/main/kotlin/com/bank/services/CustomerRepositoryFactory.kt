@@ -5,7 +5,7 @@ import com.bank.repository.customer.CustomerRepository
 import com.bank.repository.customer.CustomersTable
 import com.bank.repository.customer.ExposedCustomerRepository
 import com.bank.repository.customer.MemCustomerRepository
-import com.sbarrasa.registry.RegistryFactory
+import com.sbarrasa.common.registry.RegistryFactory
 
 object CustomerRepositoryFactory: RegistryFactory<String, CustomerRepository>() {
    init {

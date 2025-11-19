@@ -1,7 +1,7 @@
 package com.sbarrasa.repository
 
-import com.sbarrasa.id.Id
-import com.sbarrasa.id.generators.IdGen
+import com.sbarrasa.common.id.Id
+import com.sbarrasa.common.id.generators.IdGen
 
 
 open class MemRepository<I : Any, T : Id<I?>>(

@@ -2,7 +2,7 @@ package com.sbarrasa.repository.exposed
 
 import com.sbarrasa.repository.EntityNotFoundException
 import com.sbarrasa.repository.Repository
-import com.sbarrasa.id.Id
+import com.sbarrasa.common.id.Id
 import org.jetbrains.exposed.dao.EntityClass
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.sql.transactions.transaction

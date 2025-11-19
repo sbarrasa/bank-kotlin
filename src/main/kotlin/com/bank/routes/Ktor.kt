@@ -3,7 +3,7 @@ package com.bank.routes
 import com.bank.repository.customer.CustomerRepository
 import com.bank.services.ProductTypes
 import com.sbarrasa.repository.EntityNotFoundException
-import com.sbarrasa.serialization.modules.polymorphic
+import com.sbarrasa.common.serialization.modules.polymorphic
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*

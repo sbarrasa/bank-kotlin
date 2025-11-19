@@ -1,6 +1,6 @@
 package com.bank.model.products.structure
 
-import com.sbarrasa.id.IdDesc
+import com.sbarrasa.common.id.IdDesc
 import kotlinx.serialization.Serializable
 import kotlin.reflect.full.companionObjectInstance
 

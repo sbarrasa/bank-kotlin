@@ -3,7 +3,7 @@ package com.bank.model.products
 import com.bank.model.products.structure.Account
 import com.bank.model.products.structure.Currency
 import com.bank.model.products.structure.ProductDescriptor
-import com.sbarrasa.idlegal.cbu.CBU
+import com.sbarrasa.domain.cbu.CBU
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

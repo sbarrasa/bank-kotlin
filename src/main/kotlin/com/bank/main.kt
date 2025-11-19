@@ -4,7 +4,7 @@ import com.bank.services.CustomerRepositoryFactory
 import com.bank.routes.initModules
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import com.sbarrasa.args.*
+import com.sbarrasa.common.args.get
 import org.slf4j.LoggerFactory
 
 val log = LoggerFactory.getLogger("Application")

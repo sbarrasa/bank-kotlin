@@ -1,6 +1,6 @@
 package com.bank.model.customer
 
-import com.sbarrasa.person.Name
+import com.sbarrasa.domain.person.LegalName
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Month
 import kotlin.test.Test
@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 class CustomerTest {
    val customer1 = Customer(
       id = 1,
-      legalName = Name("Sebastian Gabriel","Barrasa"),
+      legalName = LegalName("Barrasa, Sebastian Gabriel"),
       birthDay = LocalDate(1974, Month.JUNE, 7),
       gender = Gender.M
    )

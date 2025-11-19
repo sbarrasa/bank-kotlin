@@ -6,8 +6,8 @@ import com.bank.model.products.DebitCardProduct
 import com.bank.model.products.SavingAccount
 import com.bank.model.products.structure.Product
 import com.bank.model.products.structure.ProductDescriptor
-import com.sbarrasa.id.map.Mappeable
-import com.sbarrasa.kclass.ClassHierarchy
+import com.sbarrasa.common.id.map.Mappeable
+import com.sbarrasa.common.reflection.ClassHierarchy
 import kotlin.reflect.KClass
 import kotlin.reflect.full.companionObjectInstance
 

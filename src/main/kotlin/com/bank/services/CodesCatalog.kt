@@ -2,10 +2,10 @@ package com.bank.services
 
 import com.bank.model.customer.Gender
 import com.bank.model.products.structure.Currency
-import com.sbarrasa.idlegal.cuit.CuitEntityCodes
-import com.sbarrasa.id.map.Catalog
-import com.sbarrasa.case.Case
-import com.sbarrasa.idlegal.cuit.Cuit
+import com.sbarrasa.domain.cuit.CuitEntityCodes
+import com.sbarrasa.common.id.map.Catalog
+import com.sbarrasa.common.text.Case
+import com.sbarrasa.domain.cuit.Cuit
 
 
 //TODO: transformar en MemRepository
