@@ -7,8 +7,6 @@ import kotlinx.serialization.Serializable
 @JvmInline
 value class NamePart(override val text: String) : Names {
    init {
-      Names.validate(text)
+      NameUtils.validate(text)
    }
-
-
 }

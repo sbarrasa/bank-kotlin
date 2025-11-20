@@ -21,10 +21,10 @@ abstract class CheckDigitValidator(val msg: String?=null) {
 
    fun validate(digits: List<Int>, vd: Int) {
       val expected = compute(digits)
-      if (expected != vd) throw ValidatorException("${texts.INVALID_CHECK_DIGIT}: $msg")
+      if (expected != vd) throw ValidatorException("${Texts.INVALID_CHECK_DIGIT}: $msg")
    }
 
-   object texts {
+   object Texts {
       var INVALID_CHECK_DIGIT = "Dígito verificador inválido para"
    }
 }

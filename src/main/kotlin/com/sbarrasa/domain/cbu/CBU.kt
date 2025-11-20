@@ -22,11 +22,11 @@ value class CBU(val value: String) {
    }
 
    private fun validateLength() {
-      LengthValidator(texts.INVALID_LENGTH, SIZE).validate(value)
+      LengthValidator(Texts.INVALID_LENGTH, SIZE).validate(value)
    }
 
    private fun validateDigits() {
-      DigitsValidator(texts.ONLY_DIGITS).validate(value)
+      DigitsValidator(Texts.ONLY_DIGITS).validate(value)
    }
 
    private fun validateEntityBranchDigit() {
@@ -41,7 +41,7 @@ value class CBU(val value: String) {
       AccountValidator.validate(digits, vd)
    }
 
-   object texts {
+   object Texts {
       var BRANCH = "Entidad/sucursal"
       var ACCOUNT = "Número de cuenta"
       var INVALID_LENGTH = "CBU debe tener 22 dígitos"

@@ -17,18 +17,18 @@ value class CardNumber(val value: String) {
    val brand: CardBrand? get() = CardBrand.of(this)
 
    private fun validateLength() {
-      if (value.length !in BinTable.lengthRange()) throw ValidatorException(texts.INVALID_LENGTH)
+      if (value.length !in BinTable.lengthRange()) throw ValidatorException(Texts.INVALID_LENGTH)
    }
 
    private fun validateDigits() {
-      DigitsValidator(texts.ONLY_DIGITS).validate(value)
+      DigitsValidator(Texts.ONLY_DIGITS).validate(value)
    }
 
    private fun validateCheckDigit() {
-      LuhnValidator(texts.CARD_NUMBER).validate(value)
+      LuhnValidator(Texts.CARD_NUMBER).validate(value)
    }
 
-   object texts {
+   object Texts {
       var CARD_NUMBER = "Número de tarjeta"
       var INVALID_LENGTH = "Longitud de $CARD_NUMBER inválido"
       var ONLY_DIGITS = "$CARD_NUMBER sólo puede contener números"
