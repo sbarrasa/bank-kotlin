@@ -2,7 +2,7 @@ package com.sbarrasa.domain.cuit
 
 import com.sbarrasa.domain.validator.CheckDigitValidator
 import kotlin.test.*
-import com.sbarrasa.domain.LegalIdException
+import com.sbarrasa.domain.validator.ValidatorException
 
 
 class CuitTest {
@@ -17,26 +17,26 @@ class CuitTest {
 
    @Test
    fun invalidLength() {
-      val e = assertFailsWith<LegalIdException> { Cuit("2032964233") }
-      assertContains(e.message ?: "", Cuit.msg.INVALID_LENGTH)
+      val e = assertFailsWith<ValidatorException> { Cuit("2032964233") }
+      assertContains(e.message ?: "", Cuit.texts.INVALID_LENGTH)
    }
 
    @Test
    fun nonDigitCharacters() {
-      val e = assertFailsWith<LegalIdException> { Cuit("20329642A30") }
-      assertContains(e.message ?: "", Cuit.msg.DIGITS)
+      val e = assertFailsWith<ValidatorException> { Cuit("20329642A30") }
+      assertContains(e.message ?: "", Cuit.texts.ONLY_DIGITS)
    }
 
    @Test
    fun invalidEntityCode() {
-      val e = assertFailsWith<LegalIdException> { Cuit("99329642330") }
-      assertContains(e.message ?: "", Cuit.msg.INVALID_ENTITY_CODE)
+      val e = assertFailsWith<ValidatorException> { Cuit("99329642330") }
+      assertContains(e.message ?: "", Cuit.texts.INVALID_ENTITY_CODE)
    }
 
    @Test
    fun invalidCheckDigit() {
-      val e = assertFailsWith<LegalIdException> { Cuit("20329642331") }
-      assertContains(e.message ?: "", CheckDigitValidator.msg.INVALID_CHECK_DIGIT)
+      val e = assertFailsWith<ValidatorException> { Cuit("20329642331") }
+      assertContains(e.message ?: "", CheckDigitValidator.texts.INVALID_CHECK_DIGIT)
    }
 
    @Test

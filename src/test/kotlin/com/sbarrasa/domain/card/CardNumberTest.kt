@@ -1,6 +1,6 @@
 package com.sbarrasa.domain.card
 
-import com.sbarrasa.domain.LegalIdException
+import com.sbarrasa.domain.validator.ValidatorException
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
@@ -35,18 +35,18 @@ class CardNumberTest {
 
    @Test
    fun invalidLength() {
-      val e = assertFailsWith<LegalIdException> { CardNumber("123") }
-      assertContains( e.message ?: "", CardNumber.msg.LENGTH)
+      val e = assertFailsWith<ValidatorException> { CardNumber("123") }
+      assertContains( e.message ?: "", CardNumber.texts.INVALID_LENGTH)
    }
 
    @Test
    fun invalidDigit() {
-      assertFailsWith<LegalIdException> { CardNumber("41111111111111A1") }
+      assertFailsWith<ValidatorException> { CardNumber("41111111111111A1") }
    }
 
    @Test
    fun invalidCheckDigit() {
-      assertFailsWith<LegalIdException> { CardNumber("4111111111111112") }
+      assertFailsWith<ValidatorException> { CardNumber("4111111111111112") }
    }
 
    @Test

@@ -1,0 +1,14 @@
+package com.sbarrasa.domain.person
+
+import kotlinx.serialization.Serializable
+
+
+@Serializable
+@JvmInline
+value class NamePart(override val text: String) : Names {
+   init {
+      Names.validate(text)
+   }
+
+
+}

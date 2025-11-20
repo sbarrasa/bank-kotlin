@@ -3,13 +3,14 @@ package com.sbarrasa.domain.person
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FullName(val names: GivenNames,
-                    val lastNames: LastNames?): NamesList{
+data class FullName(val lastNames: NamePart, val givenNames: NamePart): Names {
 
-   override val list get() = names.list + (lastNames?.list ?: emptyList())
+   override val text: String
+      get() = "$lastNames, $givenNames"
 
-   override fun toString(): String {
-      return "$lastNames, $names"
-   }
+   override val list get() = givenNames.list + lastNames.list
+
+   override fun toString(): String = text
+
 
 }

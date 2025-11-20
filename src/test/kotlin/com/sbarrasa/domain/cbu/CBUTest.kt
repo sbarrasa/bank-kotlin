@@ -1,6 +1,6 @@
 package com.sbarrasa.domain.cbu
 
-import com.sbarrasa.domain.LegalIdException
+import com.sbarrasa.domain.validator.ValidatorException
 import kotlin.test.*
 
 class CBUTest {
@@ -15,28 +15,28 @@ class CBUTest {
 
    @Test
    fun invalidLength() {
-      val e = assertFailsWith<LegalIdException> { CBU("011062713006270145810") }
-      assertContains(e.message ?: "", CBU.msg.INVALID_LENGTH)
+      val e = assertFailsWith<ValidatorException> { CBU("011062713006270145810") }
+      assertContains(e.message ?: "", CBU.texts.INVALID_LENGTH)
    }
 
    @Test
    fun nonDigitCharacters() {
-      val e = assertFailsWith<LegalIdException> { CBU("0110627A30062701458101") }
-      assertContains(e.message ?: "", CBU.msg.DIGITS)
+      val e = assertFailsWith<ValidatorException> { CBU("0110627A30062701458101") }
+      assertContains(e.message ?: "", CBU.texts.ONLY_DIGITS)
    }
 
    @Test
    fun invalidEntityBranchDigit() {
       // Modifica el dígito verificador de entidad/sucursal
       val cbuString = "0110627131062701458101"
-      assertFailsWith<LegalIdException> { CBU(cbuString) }
+      assertFailsWith<ValidatorException> { CBU(cbuString) }
    }
 
    @Test
    fun invalidAccountDigit() {
       // Modifica el dígito verificador de cuenta
       val cbuString = "0110627130062701458102"
-      assertFailsWith<LegalIdException> { CBU(cbuString) }
+      assertFailsWith<ValidatorException> { CBU(cbuString) }
    }
 
    @Test

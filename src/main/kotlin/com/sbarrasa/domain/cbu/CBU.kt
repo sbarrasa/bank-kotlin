@@ -1,6 +1,7 @@
 package com.sbarrasa.domain.cbu
 
-import com.sbarrasa.domain.LegalIdException
+import com.sbarrasa.domain.validator.DigitsValidator
+import com.sbarrasa.domain.validator.LengthValidator
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -21,11 +22,11 @@ value class CBU(val value: String) {
    }
 
    private fun validateLength() {
-      if (value.length != SIZE) throw LegalIdException(msg.INVALID_LENGTH)
+      LengthValidator(texts.INVALID_LENGTH, SIZE).validate(value)
    }
 
    private fun validateDigits() {
-      if (!value.all { it.isDigit() }) throw LegalIdException(msg.DIGITS)
+      DigitsValidator(texts.ONLY_DIGITS).validate(value)
    }
 
    private fun validateEntityBranchDigit() {
@@ -40,11 +41,11 @@ value class CBU(val value: String) {
       AccountValidator.validate(digits, vd)
    }
 
-   object msg {
+   object texts {
       var BRANCH = "Entidad/sucursal"
       var ACCOUNT = "Número de cuenta"
       var INVALID_LENGTH = "CBU debe tener 22 dígitos"
-      var DIGITS = "CBU solo puede contener números"
+      var ONLY_DIGITS = "CBU solo puede contener números"
    }
 
    companion object {

@@ -1,8 +1,6 @@
 package com.sbarrasa.domain.validator
 
-import com.sbarrasa.domain.card.CardNumber
-
-object LuhnValidator : CheckDigitValidator(CardNumber.msg.CARD) {
+class LuhnValidator(name: String?=null) : CheckDigitValidator(name) {
    override fun compute(digits: List<Int>): Int {
       var sum = 0
       val size = digits.size
