@@ -1,6 +1,5 @@
 package com.sbarrasa.domain.cuit
 
-import com.sbarrasa.common.id.Desc
 import com.sbarrasa.domain.validator.ValidatorException
 import com.sbarrasa.domain.validator.DigitsValidator
 import com.sbarrasa.domain.validator.LengthValidator
@@ -46,7 +45,7 @@ value class Cuit(val value: String) {
    fun formated() = "$entityCode-$document-$check"
    override fun toString(): String = value
 
-   enum class EntityType(override val description: String) : Desc {
+   enum class EntityType(val description: String) {
       PERSON(Texts.PERSON_DESCRIPTION),
       COMPANY(Texts.COMPANY_DESCRIPTION);
    }

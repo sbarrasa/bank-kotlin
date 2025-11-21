@@ -1,5 +1,7 @@
 package com.bank.model.products.structure
 
-import com.sbarrasa.common.id.IdDesc
 
-interface ProductDescriptor: IdDesc<String>
+interface ProductDescriptor {
+   val type: String
+   val description: String
+}

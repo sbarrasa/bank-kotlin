@@ -1,9 +1,6 @@
 package com.bank.model.customer
 
-import com.sbarrasa.common.id.Desc
-
-
-enum class Gender(override val description: String) : Desc {
+enum class Gender(val description: String) {
    M("masculino"),
    F("femenino"),
    X("indefinido");

@@ -1,6 +1,6 @@
-package com.sbarrasa.common.serialization.modules
+package com.sbarrasa.common.serialization
 
-import com.sbarrasa.common.reflection.ClassHierarchy
+import com.sbarrasa.common.collections.ClassHierarchy
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.modules.SerializersModuleBuilder
 import kotlinx.serialization.modules.polymorphic

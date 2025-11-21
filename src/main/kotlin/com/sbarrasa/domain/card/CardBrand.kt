@@ -1,8 +1,7 @@
 package com.sbarrasa.domain.card
 
-
 enum class CardBrand(val description: String) {
-   VISA("VISA"),
+   VISA("VISA") ,
    MC("MasterCard"),
    MAESTRO("Maestro"),
    CABAL("Cabal"),

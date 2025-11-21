@@ -12,5 +12,5 @@ data class Customer(
    var fullName: FullName? = null,
    var birthDay: LocalDate? = null,
    var gender: Gender? = null,
-   var cuit: Cuit? = null)
-: Id<Int?>
+   var cuit: Cuit? = null
+): Id<Int?>

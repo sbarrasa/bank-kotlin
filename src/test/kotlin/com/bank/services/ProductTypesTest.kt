@@ -2,11 +2,11 @@ package com.bank.services
 
 import com.bank.model.products.CheckingAccount
 import com.bank.model.products.CreditCardProduct
-import com.sbarrasa.common.serialization.json.decodeFromMap
+import com.sbarrasa.common.serialization.decodeFromMap
 import com.bank.model.products.structure.Currency
 import com.bank.model.products.structure.Product
 import com.sbarrasa.domain.card.CardBrand
-import com.sbarrasa.common.serialization.modules.polymorphic
+import com.sbarrasa.common.serialization.polymorphic
 import com.sbarrasa.domain.cbu.CBU
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.MissingFieldException
@@ -35,7 +35,7 @@ class ProductTypesTest {
    fun getDescriptor() {
       val descriptor = ProductTypes.getDescriptor(CheckingAccount::class)
 
-      assertEquals("CC", descriptor?.id)
+      assertEquals("CC", descriptor?.type)
    }
 
 
@@ -102,7 +102,7 @@ class ProductTypesTest {
       val product = json.decodeFromMap<Product>(map)
 
       assertEquals(CreditCardProduct::class, product::class)
-      assertEquals(CreditCardProduct.id, product.descriptor?.id)
+      assertEquals(CreditCardProduct.type, product.descriptor?.type)
       assertEquals(CreditCardProduct.description, product.descriptor?.description)
 
    }

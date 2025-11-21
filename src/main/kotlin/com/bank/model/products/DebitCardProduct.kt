@@ -16,7 +16,7 @@ data class DebitCardProduct(
 
    companion object: ProductDescriptor {
       const val TYPE = "TD"
-      override val id get() = TYPE
+      override val type get() = TYPE
       override val description = "Tarjeta de débito"
    }
 }

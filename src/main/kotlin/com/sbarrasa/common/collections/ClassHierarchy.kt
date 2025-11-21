@@ -1,4 +1,4 @@
-package com.sbarrasa.common.reflection
+package com.sbarrasa.common.collections
 
 import kotlin.reflect.KClass
 

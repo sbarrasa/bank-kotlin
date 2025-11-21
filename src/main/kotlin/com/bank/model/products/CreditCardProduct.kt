@@ -18,7 +18,7 @@ data class CreditCardProduct(
 ) : CardProduct(), CreditProduct {
    companion object: ProductDescriptor {
       const val TYPE = "TC"
-      override val id get() = TYPE
+      override val type get() = TYPE
       override val description = "Tarjeta de crédito"
    }
 

@@ -1,11 +1,12 @@
 package com.bank.model.products.structure
 
-import com.sbarrasa.common.id.IdDesc
 import kotlinx.serialization.Serializable
 import kotlin.reflect.full.companionObjectInstance
 
 @Serializable
-abstract class Product: IdDesc<String> {
+abstract class Product {
+   abstract val description: String
+
    val isCredit get() = this is CreditProduct
 
    val descriptor: ProductDescriptor?

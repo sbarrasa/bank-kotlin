@@ -6,11 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 abstract class CardProduct : Product() {
-    abstract val cardNumber: CardNumber
+   abstract val cardNumber: CardNumber
    abstract val expirationDate: LocalDate
-
-   override val id: String
-      get() = cardNumber.value
 
    override val description: String
       get() =  "${descriptor?.description} ${cardNumber.brand?.description}"

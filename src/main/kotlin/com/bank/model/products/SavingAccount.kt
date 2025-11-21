@@ -15,7 +15,7 @@ data class SavingAccount(
 ) : Account() {
    companion object: ProductDescriptor {
       const val TYPE = "CA"
-      override val id get() = TYPE
+      override val type get() = TYPE
       override val description = "Caja de ahorro"
    }
 }

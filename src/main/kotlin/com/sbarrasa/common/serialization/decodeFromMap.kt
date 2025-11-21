@@ -1,4 +1,4 @@
-package com.sbarrasa.common.serialization.json
+package com.sbarrasa.common.serialization
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject

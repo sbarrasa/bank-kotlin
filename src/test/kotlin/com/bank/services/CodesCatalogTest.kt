@@ -2,7 +2,7 @@ package com.bank.services
 
 import kotlin.test.*
 
-class CodesTest {
+class CodesCatalogTest {
    @Test
    fun getEntries() {
       CodesCatalog.entries.forEach {
