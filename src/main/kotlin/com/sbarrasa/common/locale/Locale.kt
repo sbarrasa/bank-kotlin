@@ -5,12 +5,13 @@ import com.sbarrasa.common.collections.StringMap
 import kotlin.reflect.KClass
 
 object Locale {
-   private val textsByClass = mutableMapOf<KClass<*>, StringMap>()
+   val textsByClass = mutableMapOf<KClass<*>, StringMap>()
 
    var rootPackage: String = "locale"
    var lang: String? = null
    var regional: String? = null
 
+   //TODO: obligar a que sea un abstract locale
    fun load() {
       lang?.let { loadModule("$rootPackage.lang.$it.LocaleConfig") }
       regional?.let { loadModule("$rootPackage.regional.$it.LocaleConfig") }
