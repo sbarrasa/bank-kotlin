@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a71e2d1-288d-4d4b-b743-95cb6fccb520" name="Changes" comment="refactor y simplificacion&#10;extensión y remodelado de catalog&#10;funcines de extensión para mapeos">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/sbarrasa/repository/MemRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/sbarrasa/repository/MemRepository.kt" afterDir="false" />
+    <list default="true" id="1ad4b230-6dcb-46d0-93f7-a9e64cfb6863" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/com/sbarrasa/domain/cuit/CuitIntl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/startServer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/startServer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/bank/services/CodesCatalog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/bank/services/CodesCatalog.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,61 +22,21 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="bank-kotlin" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Kotlin Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="master" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "sbarrasa"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sbarrasa&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/sbarrasa/bank-kotlin.git",
-    "accountId": "b859706c-9eb3-4f95-9df6-802ea3ef93c2"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/sbarrasa/bank-kotlin.git&quot;,
+    &quot;accountId&quot;: &quot;b859706c-9eb3-4f95-9df6-802ea3ef93c2&quot;
   }
-}]]></component>
+}</component>
   <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="C:\Users\zaipe\.gradle\wrapper\dists\gradle-8.14-bin\38aieal9i53h9rfe7vjup95b9\gradle-8.14" javaHome="C:\Program Files\Java\temurin-21.0.8" gradleVersion="8.14">
     <option name="jvmArguments">
       <list>
@@ -80,22 +45,25 @@
       </list>
     </option>
   </component>
-  <component name="HttpClientOnboardingState"><![CDATA[{
-  "isOnboardingCommentShown": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="35lo1tC32jLr7kzycwEvaySJKdP" />
+  <component name="ProjectId" id="35oTmd9dlRqN2Nr3McM1nq3lHK0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Gradle.CodesCatalogTest.executor": "Run",
     "Gradle.Tests in 'bank-kotlin.test'.executor": "Run",
+    "Gradle.bank-kotlin [:com.bank.MainKt.main()].executor": "Run",
+    "Gradle.bank-kotlin [:org.h2.tools.Server.main()].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -109,73 +77,69 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "kotlinNotebook",
     "to.speed.mode.migration.done": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "h2"
+    ]
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
-      <recent name="com.sbarrasa.common.collections" />
-      <recent name="com.sbarrasa.common.serialization" />
-      <recent name="com.sbarrasa.common.id" />
-      <recent name="com.sbarrasa.common.reflection" />
-      <recent name="com.sbarrasa.common.map" />
-    </key>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+      </set>
+    </option>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'bank-kotlin.test'">
-    <configuration name="CodesCatalogTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.bank.services.CodesCatalogTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+  <component name="RunManager" selected="HTTP Request.CustomerApiTest | Obtener customer por id">
+    <configuration name="ServerExposed" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="repo" value="EXPOSED" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.bank.MainKt" />
+      <module name="bank-kotlin.main" />
+      <option name="PROGRAM_PARAMETERS" value="-repo=EXPOSED" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerMEM" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="repo" value="MEM" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.bank.MainKt" />
+      <module name="bank-kotlin.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerApiTest | Crear una empresa" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/http/CustomerApiTest.http" executionIdentifier="Crear una empresa" index="6" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'bank-kotlin.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
+    <configuration name="CustomerApiTest | Crear una persona" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/http/CustomerApiTest.http" executionIdentifier="Crear una persona" index="7" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="CustomerApiTest | Listar todos los customers" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/http/CustomerApiTest.http" executionIdentifier="Listar todos los customers" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="CustomerApiTest | Obtener customer con id nulo" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/http/CustomerApiTest.http" executionIdentifier="Obtener customer con id nulo" index="4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="CustomerApiTest | Obtener customer por id" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/test/http/CustomerApiTest.http" executionIdentifier="Obtener customer por id" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Tests in 'bank-kotlin.test'" />
-        <item itemvalue="Gradle.CodesCatalogTest" />
+        <item itemvalue="HTTP Request.CustomerApiTest | Obtener customer por id" />
+        <item itemvalue="HTTP Request.CustomerApiTest | Listar todos los customers" />
+        <item itemvalue="HTTP Request.CustomerApiTest | Crear una empresa" />
+        <item itemvalue="HTTP Request.CustomerApiTest | Crear una persona" />
+        <item itemvalue="HTTP Request.CustomerApiTest | Obtener customer con id nulo" />
       </list>
     </recent_temporary>
   </component>
@@ -189,51 +153,17 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0a71e2d1-288d-4d4b-b743-95cb6fccb520" name="Changes" comment="" />
-      <created>1763693816124</created>
+      <changelist id="1ad4b230-6dcb-46d0-93f7-a9e64cfb6863" name="Changes" comment="" />
+      <created>1748012658067</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1763693816124</updated>
-      <workItem from="1763693817838" duration="95000" />
-      <workItem from="1763693978274" duration="15285000" />
+      <updated>1748012658067</updated>
+      <workItem from="1763775595763" duration="711000" />
+      <workItem from="1763776424574" duration="610000" />
     </task>
-    <task id="LOCAL-00001" summary="gradle wrapper y optimización de  gradle">
-      <option name="closed" value="true" />
-      <created>1763694908442</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1763694908442</updated>
-    </task>
-    <task id="LOCAL-00002" summary="gradle wrapper y optimización de  gradle">
-      <option name="closed" value="true" />
-      <created>1763694919886</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1763694919887</updated>
-    </task>
-    <task id="LOCAL-00003" summary="refactor y simplificacion&#10;extensión y remodelado de catalog&#10;funcines de extensión para mapeos">
-      <option name="closed" value="true" />
-      <created>1763710068477</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1763710068477</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="gradle wrapper y optimización de  gradle" />
-    <MESSAGE value="refactor y simplificacion&#10;extensión y remodelado de catalog&#10;funcines de extensión para mapeos" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor y simplificacion&#10;extensión y remodelado de catalog&#10;funcines de extensión para mapeos" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

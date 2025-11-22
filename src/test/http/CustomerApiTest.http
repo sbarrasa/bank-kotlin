@@ -3,7 +3,7 @@ GET http://localhost:8080/customers
 Accept: application/json
 
 ### Obtener customer por id
-GET http://localhost:8080/customers/1
+GET http://localhost:8080/customers/140
 Accept: application/json
 
 ### Obtener customer con id invalido
@@ -24,7 +24,7 @@ POST http://localhost:8080/customers
 Content-Type: application/json
 
 {
-  "legalName": "CocaCola",
+  "fullName": "CocaCola,ARG",
   "cuit": "30525390086"
 }
 
@@ -33,7 +33,7 @@ POST http://localhost:8080/customers
 Content-Type: application/json
 
 {
-  "legalName": "Barrasa, Sebastián Gabriel",
+  "fullName": "Barrasa, Sebastián Gabriel",
   "cuit": "20240614708",
   "birthDay": "1974-06-07",
   "gender": "M"
