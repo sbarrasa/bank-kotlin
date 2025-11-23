@@ -31,3 +31,6 @@ object Locale {
    fun texts(k: KClass<*>): FallbackStringMap =
       FallbackStringMap(textsByClass[k] ?: emptyMap())
 }
+
+val Any.localeText: FallbackStringMap
+   get() = Locale.texts(this::class)

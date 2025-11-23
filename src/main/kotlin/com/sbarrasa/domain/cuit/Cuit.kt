@@ -1,6 +1,6 @@
 package com.sbarrasa.domain.cuit
 
-import com.sbarrasa.common.locale.Locale
+import com.sbarrasa.common.locale.*
 import com.sbarrasa.domain.validator.ValidatorException
 import com.sbarrasa.domain.validator.DigitsValidator
 import com.sbarrasa.domain.validator.LengthValidator
@@ -24,15 +24,15 @@ value class Cuit(val value: String) {
    }
 
    private fun validateLength() {
-      LengthValidator(texts["INVALID_LENGTH, SIZE"], SIZE).validate(value)
+      LengthValidator(localeText["INVALID_LENGTH, SIZE"], SIZE).validate(value)
    }
 
    private fun validateDigits() {
-      DigitsValidator(texts["ONLY_DIGITS"]).validate(value)
+      DigitsValidator(localeText["ONLY_DIGITS"]).validate(value)
    }
 
    private fun validateEntityCode() {
-      if (!CuitEntityCodes.contains(entityCode)) throw ValidatorException(texts["INVALID_ENTITY_CODE"])
+      if (!CuitEntityCodes.contains(entityCode)) throw ValidatorException(localeText["INVALID_ENTITY_CODE"])
    }
 
    private fun validateCheckDigit() {
@@ -41,15 +41,14 @@ value class Cuit(val value: String) {
 
    companion object {
       const val SIZE = 11
-      val texts get() = Locale.texts(Cuit::class)
    }
 
    fun formated() = "$entityCode-$document-$check"
    override fun toString(): String = value
 
    enum class EntityType(val description: String) {
-      PERSON(texts["PERSON_DESCRIPTION"]),
-      COMPANY(texts["COMPANY_DESCRIPTION"]);
+      PERSON(localeText["PERSON_DESCRIPTION"]),
+      COMPANY(localeText["COMPANY_DESCRIPTION"]);
    }
 
 

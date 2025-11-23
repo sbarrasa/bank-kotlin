@@ -7,7 +7,7 @@ abstract class AbstractLocaleConfig {
       register()
    }
 
-   protected fun <T : Any> KClass<T>.texts(block: (MutableMap<String, String>) -> Unit) {
+   protected fun <T : Any> KClass<T>.register(block: (MutableMap<String, String>) -> Unit) {
       Locale.register(this, block)
    }
 

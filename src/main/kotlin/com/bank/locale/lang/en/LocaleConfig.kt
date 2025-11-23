@@ -11,7 +11,7 @@ import com.sbarrasa.repository.EntityNotFoundException
 
 object LocaleConfig : AbstractLocaleConfig() {
    override fun register() {
-      Cuit::class.texts {
+      Cuit::class.register {
          it["PERSON_DESCRIPTION"] = "individual"
          it["COMPANY_DESCRIPTION"] = "company"
          it["CUIT_CUIL"] = "CUIT/CUIL"
@@ -20,33 +20,33 @@ object LocaleConfig : AbstractLocaleConfig() {
          it["INVALID_ENTITY_CODE"] = "Invalid entity code"
       }
 
-      CBU::class.texts {
+      CBU::class.register {
          it["BRANCH"] = "Branch"
          it["ACCOUNT"] = "Account number"
          it["INVALID_LENGTH"] = "CBU must have 22 digits"
          it["ONLY_DIGITS"] = "CBU can contain only numbers"
       }
 
-      CardNumber::class.texts {
+      CardNumber::class.register {
          it["CARD_NUMBER"] = "Card number"
          it["INVALID_LENGTH"] = "Card number length is invalid"
          it["ONLY_DIGITS"] = "Card number can contain only numbers"
       }
 
-      NameUtils::class.texts {
+      NameUtils::class.register {
          it["INVALID_FORMAT"] = "Names cannot contain special characters"
       }
 
-      CheckDigitValidator::class.texts {
+      CheckDigitValidator::class.register {
          it["INVALID_CHECK_DIGIT"] = "Invalid check digit for"
       }
 
-      Catalog::class.texts {
+      Catalog::class.register {
          it["NO_CLASS_NAME"] = "Class must have simple name"
          it["EMPTY_ITERABLE"] = "Cannot infer class from empty iterable"
       }
 
-      EntityNotFoundException::class.texts {
+      EntityNotFoundException::class.register {
          it["ENTITY_NOT_FOUND"] = "Entity not found"
       }
    }
