@@ -4,8 +4,6 @@ val kotlinVersion = "2.2.21"
 val logbackVersion = "1.5.19"
 val ktorVersion = "2.3.11"
 val dateTimeVersion = "0.6.2"
-val group = "com.swelms"
-val version = "1.0-SNAPSHOT"
 
 
 plugins {
@@ -14,8 +12,12 @@ plugins {
    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
 }
 
+group = "com.swelms"
+version = "1.0-SNAPSHOT"
+
 repositories {
    mavenCentral()
+   maven { url = uri("https://jitpack.io") }
 }
 
 
@@ -42,9 +44,8 @@ dependencies {
 
    testImplementation(kotlin("test"))
    testImplementation("io.ktor:ktor-server-test-host-jvm:${ktorVersion}")
-   testImplementation("org.junit.jupiter:junit-jupiter:5.14.0")
    testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
-
+   implementation("com.github.sbarrasa:swelms-lib:master-SNAPSHOT")
 }
 
 kotlin {
@@ -52,6 +53,3 @@ kotlin {
    }
 }
 
-tasks.test {
-   useJUnitPlatform()
-}
