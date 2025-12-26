@@ -9,12 +9,8 @@ import io.ktor.server.netty.*
 fun main(args: Array<String>) {
    val env = applicationEngineEnvironment {
       config = HoconApplicationConfig(ConfigFactory.load("application.conf"))
-      module {
-         configModule()
-      }
-      connector {
-         port = 8080
-      }
+      module { configModule() }
+      connector { port = 8080 }
    }
 
    configLocale()

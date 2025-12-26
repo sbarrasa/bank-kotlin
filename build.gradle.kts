@@ -17,9 +17,13 @@ version = "1.0-SNAPSHOT"
 
 repositories {
    mavenCentral()
-   maven { url = uri("https://jitpack.io") }
+   maven("https://jitpack.io") {
+      metadataSources {
+         mavenPom()
+         artifact()
+      }
+   }
 }
-
 
 dependencies {
    implementation("io.ktor:ktor-server-core:$ktorVersion")
@@ -41,11 +45,12 @@ dependencies {
    implementation("com.h2database:h2:$h2Version")
    implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+   implementation("com.github.sbarrasa:swelms-lib:d7d2e043e0")
 
    testImplementation(kotlin("test"))
    testImplementation("io.ktor:ktor-server-test-host-jvm:${ktorVersion}")
    testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
-   implementation("com.github.sbarrasa:swelms-lib:master-SNAPSHOT")
+
 }
 
 kotlin {

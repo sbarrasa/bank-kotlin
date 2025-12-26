@@ -1,7 +1,6 @@
 package com.bank.database
 
 import com.bank.model.customer.Customer
-import com.swelms.common.locale.Locale
 import com.swelms.common.locale.localeText
 import com.swelms.common.locale.replaceSlots
 import com.swelms.domain.person.name.FullName

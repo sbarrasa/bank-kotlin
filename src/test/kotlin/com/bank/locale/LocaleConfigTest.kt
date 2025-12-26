@@ -4,7 +4,7 @@ import com.swelms.domain.person.Gender
 import kotlin.test.*
 import com.swelms.domain.id.cuit.Cuit
 import com.swelms.common.locale.*
-import com.swelms.domain.validator.ValidatorException
+import com.swelms.common.validator.ValidatorException
 
 class LocaleConfigFullTest {
 
@@ -71,7 +71,6 @@ class LocaleConfigFullTest {
    @Test
    fun testMissingRegional() {
       Locale.regional = null
-      // No hay regional, value debería devolver null o lanzar excepción según configuración
       assertFailsWith<NoSuchElementException> {
          Locale.value<String>("DATE_FORMAT")
       }

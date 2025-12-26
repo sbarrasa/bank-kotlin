@@ -1,28 +1,27 @@
 package com.bank.services
 
-import com.bank.model.products.ActiveCurrencySet
-import com.bank.model.products.Product
 import com.bank.model.products.ProductDescriptor
+import com.bank.model.products.activeCurrencies
 import com.swelms.domain.person.Gender
 import com.swelms.common.collections.*
-import com.swelms.common.text.Case
+import com.swelms.common.enums.*
+import com.swelms.common.text.Style
 import com.swelms.domain.id.card.CardBrand
 import com.swelms.domain.id.cuit.*
 import kotlin.collections.associate
 
 
-object Codes: Catalog(Case.SNAKE) {
+object Codes: Catalog(Style.SNAKE) {
    init {
       init()
    }
-
    fun init(){
-      put(Cuit.EntityType.entries.associateTo { it.description })
-      put(Cuit.EntityCodes.associate { it.key to it.description })
-      put(ProductDescriptor.descriptors.associate { it.productId to it.description })
-      put(Gender.entries.associateTo { it.description })
-      put(CardBrand.entries.associateTo { it.description })
-      put(ActiveCurrencySet.associateTo{ it.localeDescription})
+      put("Cuit.EntityType", enumMap(Cuit.EntityType::description))
+      put("Cuit.EntityCodes", Cuit.EntityCodes.associate { it.key to it.description })
+      put("Products", ProductDescriptor.idMap)
+      put(enumMap(Gender::description))
+      put(enumMap(CardBrand::description))
+      put(activeCurrencies.associateWith{ it.localeDescription})
    }
 }
 

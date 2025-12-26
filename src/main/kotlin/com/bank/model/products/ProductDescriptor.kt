@@ -11,8 +11,8 @@ class ProductDescriptor(val type: KClass<out Product>, val productId: String = t
 
    companion object {
       val descriptors = Product::class.finalSubclasses.map { ProductDescriptor(it) }
-      private val typesMap = descriptors.associateBy { it.type }
-      private val idMap = descriptors.associateBy { it.productId }
+      val typesMap = descriptors.associateBy { it.type }
+      val idMap = descriptors.associateBy { it.productId }
 
 
       operator fun get(productId: String) =

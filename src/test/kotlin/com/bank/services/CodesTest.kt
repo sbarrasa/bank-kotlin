@@ -2,9 +2,10 @@ package com.bank.services
 
 import com.bank.locale.lang_es
 import com.swelms.common.locale.Locale
+
 import kotlin.test.*
 
-class CodesCatalogTest {
+class CodesTest {
    init {
       Locale.registerConfigs(lang_es)
       Locale.lang = "es"

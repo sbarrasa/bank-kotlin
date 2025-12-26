@@ -1,6 +1,5 @@
 package com.bank.model.products
 
-import com.swelms.common.serialization.serialName
 import com.swelms.domain.id.cbu.CBU
 import com.swelms.domain.locale.Currency
 import kotlinx.serialization.SerialName
