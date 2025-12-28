@@ -6,20 +6,15 @@ import com.swelms.common.serialization.decodeFromMap
 import com.swelms.domain.locale.Currency
 import com.bank.model.products.Product
 import com.swelms.domain.id.card.CardBrand
-import com.swelms.common.serialization.polymorphic
 import com.swelms.domain.id.cbu.CBU
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.MissingFieldException
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.modules.SerializersModule
 import kotlin.test.*
 
 class ProductSerialization {
 
    val json = Json {
-      serializersModule = SerializersModule {
-         polymorphic(Product::class)
-      }
       classDiscriminator = "type"
       ignoreUnknownKeys = true
    }

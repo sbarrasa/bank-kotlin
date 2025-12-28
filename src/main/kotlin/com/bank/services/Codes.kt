@@ -16,11 +16,11 @@ object Codes: Catalog(Style.SNAKE) {
       init()
    }
    fun init(){
-      put("Cuit.EntityType", enumMap(Cuit.EntityType::description))
+      put("Cuit.EntityType", Cuit.EntityType.entries.associateWith { it.description})
       put("Cuit.EntityCodes", Cuit.EntityCodes.associate { it.key to it.description })
       put("Products", ProductDescriptor.idMap)
-      put(enumMap(Gender::description))
-      put(enumMap(CardBrand::description))
+      put(Gender.entries.associateWith { it.description })
+      put(CardBrand.entries.associateWith { it.description})
       put(activeCurrencies.associateWith{ it.localeDescription})
    }
 }

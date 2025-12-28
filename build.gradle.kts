@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 val exposedVersion = "0.50.1"
 val h2Version = "2.3.232"
 val kotlinVersion = "2.2.21"
@@ -45,7 +47,7 @@ dependencies {
    implementation("com.h2database:h2:$h2Version")
    implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
    implementation("ch.qos.logback:logback-classic:$logbackVersion")
-   implementation("com.github.sbarrasa:swelms-lib:d7d2e043e0")
+   implementation("com.github.sbarrasa:swelms-lib:82f2006f74")
 
    testImplementation(kotlin("test"))
    testImplementation("io.ktor:ktor-server-test-host-jvm:${ktorVersion}")
@@ -58,3 +60,7 @@ kotlin {
    }
 }
 
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.compilerOptions {
+   freeCompilerArgs.set(listOf("-Xcontext-parameters"))
+}

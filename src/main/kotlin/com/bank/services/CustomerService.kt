@@ -1,6 +1,7 @@
 package com.bank.database
 
 import com.bank.model.customer.Customer
+import com.swelms.common.applyFrom
 import com.swelms.common.locale.localeText
 import com.swelms.common.locale.replaceSlots
 import com.swelms.domain.person.name.FullName
@@ -34,7 +35,7 @@ object CustomerService {
 
    fun update(id: Int, customer: Customer): Customer = transaction {
          val currentCustomer = get(id)
-         customer.copyTo(currentCustomer)
+         currentCustomer.copyFrom(customer)
 
          CustomersTable.update({ CustomersTable.id eq id })
                            { currentCustomer.toRow(it) }
@@ -50,20 +51,18 @@ object CustomerService {
    }
 }
 
-fun Customer.copyTo(target: Customer) = target.copy(
-      fullName = this.fullName ?: target.fullName,
-      birthDay = this.birthDay ?: target.birthDay,
-      cuit = this.cuit ?: target.cuit,
-      gender = this.gender ?: target.gender
-   )
+fun Customer.copyFrom(source: Customer) = apply {
+   source.fullName?.let { fullName = it }
+   source.birthDay?.let { birthDay = it }
+   source.cuit?.let { cuit = it }
+   source.gender?.let { gender = it }
+}
 
-
-
-fun Customer.toRow(stmt: UpdateBuilder<*>) {
-   stmt[CustomersTable.legalName] = fullName?.text ?: ""
-   stmt[CustomersTable.cuit] = cuit?.value ?: ""
-   stmt[CustomersTable.birthDay] = birthDay
-   stmt[CustomersTable.gender] = gender
+fun Customer.toRow(field: UpdateBuilder<*>) = applyFrom(CustomersTable){
+   field[it.legalName] = fullName?.text ?: ""
+   field[it.cuit] = cuit?.value ?: ""
+   field[it.birthDay] = birthDay
+   field[it.gender] = gender
 }
 
 fun ResultRow.toCustomer() = Customer(

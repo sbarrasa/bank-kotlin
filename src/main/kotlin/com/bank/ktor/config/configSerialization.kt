@@ -1,7 +1,5 @@
 package com.bank.ktor.config
 
-import com.bank.model.products.Product
-import com.swelms.common.serialization.polymorphic
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
@@ -12,21 +10,14 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.modules.SerializersModule
 
 @OptIn(ExperimentalSerializationApi::class)
 internal fun Application.configSerialization() {
    install(ContentNegotiation) {
       json(
          Json {
-            serializersModule = SerializersModule {
-               polymorphic(Product::class)
-            }
-            classDiscriminator = "type"
             ignoreUnknownKeys = true
             explicitNulls = false
-
-
          }
       )
    }
