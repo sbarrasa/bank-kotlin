@@ -47,7 +47,7 @@ dependencies {
    implementation("com.h2database:h2:$h2Version")
    implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
    implementation("ch.qos.logback:logback-classic:$logbackVersion")
-   implementation("com.github.sbarrasa:swelms-lib:82f2006f74")
+   implementation("com.github.sbarrasa:swelms-lib:0cab5f3d5f")
 
    testImplementation(kotlin("test"))
    testImplementation("io.ktor:ktor-server-test-host-jvm:${ktorVersion}")
@@ -62,5 +62,9 @@ kotlin {
 
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.compilerOptions {
+   freeCompilerArgs.set(listOf("-Xcontext-parameters"))
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.compilerOptions {
    freeCompilerArgs.set(listOf("-Xcontext-parameters"))
 }

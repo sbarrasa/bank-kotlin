@@ -1,6 +1,5 @@
 package com.bank.model.products
 
-import com.swelms.common.serialization.serialName
 import com.swelms.domain.id.card.CardNumber
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
