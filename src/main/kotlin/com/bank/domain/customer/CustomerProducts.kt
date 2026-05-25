@@ -1,6 +1,6 @@
-package com.bank.model.customer
+package com.bank.domain.customer
 
-import com.bank.model.products.Product
+import com.bank.domain.products.Product
 import kotlinx.serialization.Serializable
 
 @Serializable

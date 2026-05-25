@@ -1,9 +1,9 @@
 package com.bank.database
 
-import com.bank.model.customer.Customer
+import com.bank.domain.customer.Customer
 import com.swelms.common.applyFrom
 import com.swelms.common.locale.localeText
-import com.swelms.common.locale.replaceSlots
+import com.swelms.common.text.replaceSlots
 import com.swelms.domain.person.name.FullName
 import com.swelms.domain.id.cuit.Cuit
 import org.jetbrains.exposed.sql.*

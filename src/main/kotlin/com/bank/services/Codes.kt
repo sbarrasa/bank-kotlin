@@ -1,7 +1,7 @@
 package com.bank.services
 
-import com.bank.model.products.ProductDescriptor
-import com.bank.model.products.activeCurrencies
+import com.bank.domain.products.ProductDescriptor
+import com.bank.domain.products.activeCurrencies
 import com.swelms.domain.person.Gender
 import com.swelms.common.collections.*
 import com.swelms.common.enums.*

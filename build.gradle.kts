@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val exposedVersion = "0.50.1"
 val h2Version = "2.3.232"
@@ -10,12 +9,14 @@ val dateTimeVersion = "0.6.2"
 
 plugins {
    kotlin("jvm") version "2.2.21"
-   id("io.ktor.plugin") version "2.3.11"
+   id("application")
    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
 }
 
+
+
 group = "com.swelms"
-version = "1.0-SNAPSHOT"
+version = "1.30"
 
 repositories {
    mavenCentral()
@@ -47,7 +48,13 @@ dependencies {
    implementation("com.h2database:h2:$h2Version")
    implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
    implementation("ch.qos.logback:logback-classic:$logbackVersion")
-   implementation("com.github.sbarrasa:swelms-lib:0cab5f3d5f")
+
+   implementation("com.github.sbarrasa:swelms-lib:master-SNAPSHOT")
+   implementation("org.openfolder:kotlin-asyncapi-ktor:3.2.1")
+   implementation("io.ktor:ktor-server-cors:${ktorVersion}")
+   implementation("io.ktor:ktor-server-caching-headers:${ktorVersion}")
+   implementation("io.ktor:ktor-server-compression:${ktorVersion}")
+   implementation("io.ktor:ktor-server-conditional-headers:${ktorVersion}")
 
    testImplementation(kotlin("test"))
    testImplementation("io.ktor:ktor-server-test-host-jvm:${ktorVersion}")
@@ -57,14 +64,6 @@ dependencies {
 
 kotlin {
    compilerOptions {
+      freeCompilerArgs.add("-Xskip-prerelease-check")
    }
-}
-
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.compilerOptions {
-   freeCompilerArgs.set(listOf("-Xcontext-parameters"))
-}
-val compileTestKotlin: KotlinCompile by tasks
-compileTestKotlin.compilerOptions {
-   freeCompilerArgs.set(listOf("-Xcontext-parameters"))
 }

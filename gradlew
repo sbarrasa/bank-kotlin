@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# Copyright © 2015-2021 the original authors.
+# Copyright © 2015 the original authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@
 #         * compound commands having a testable exit status, especially «case»;
 #         * various built-in commands including «command», «set», and «ulimit».
 #
-#   Important for PUTing:
+#   Important for patching:
 #
 #   (2) This script targets any POSIX shell, so it avoids extensions provided
 #       by Bash, Ksh, etc; in particular arrays are avoided.
@@ -114,7 +114,6 @@ case "$( uname )" in                #(
   NONSTOP* )        nonstop=true ;;
 esac
 
-CLASSPATH="\\\"\\\""
 
 
 # Determine the Java command to use to start the JVM.
@@ -162,7 +161,7 @@ if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
 fi
 
 # Collect all arguments for the java command, stacking in reverse order:
-#   * system from the command line
+#   * args from the command line
 #   * the main class name
 #   * -classpath
 #   * -D...appname settings
@@ -172,7 +171,6 @@ fi
 # For Cygwin or MSYS, switch paths to Windows format before running java
 if "$cygwin" || "$msys" ; then
     APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
-    CLASSPATH=$( cygpath --path --mixed "$CLASSPATH" )
 
     JAVACMD=$( cygpath --unix "$JAVACMD" )
 
@@ -188,8 +186,8 @@ if "$cygwin" || "$msys" ; then
         then
             arg=$( cygpath --path --ignore --mixed "$arg" )
         fi
-        # Roll the system list around exactly as many times as the number of
-        # system, so each arg winds up back in the position where it started, but
+        # Roll the args list around exactly as many times as the number of
+        # args, so each arg winds up back in the position where it started, but
         # possibly modified.
         #
         # NB: a `for` loop captures its iteration list before it begins, so
@@ -212,7 +210,6 @@ DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
 
 set -- \
         "-Dorg.gradle.appname=$APP_BASE_NAME" \
-        -classpath "$CLASSPATH" \
         -jar "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" \
         "$@"
 
@@ -222,7 +219,7 @@ then
     die "xargs is not available"
 fi
 
-# Use "xargs" to parse quoted system.
+# Use "xargs" to parse quoted args.
 #
 # With -n1 it outputs one arg per line, with the quotes and backslashes removed.
 #

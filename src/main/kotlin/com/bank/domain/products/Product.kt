@@ -1,6 +1,5 @@
-package com.bank.model.products
+package com.bank.domain.products
 
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonClassDiscriminator
 

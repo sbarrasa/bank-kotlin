@@ -1,6 +1,6 @@
 package com.bank.locale
 
-import com.bank.model.products.Product
+import com.bank.domain.products.Product
 import com.swelms.domain.person.Gender
 import com.swelms.common.collections.Catalog
 import com.swelms.common.locale.LangBuilder

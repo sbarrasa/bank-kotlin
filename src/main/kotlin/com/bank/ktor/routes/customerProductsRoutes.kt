@@ -1,6 +1,6 @@
 package com.bank.ktor.routes
 
-import com.bank.model.customer.CustomerProducts
+import com.bank.domain.customer.CustomerProducts
 import io.ktor.server.application.*
 import io.ktor.server.request.receive
 import io.ktor.server.response.respond

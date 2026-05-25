@@ -7,7 +7,7 @@ import kotlin.test.*
 
 class CodesTest {
    init {
-      Locale.registerConfigs(lang_es)
+      Locale.register(lang_es)
       Locale.lang = "es"
    }
 

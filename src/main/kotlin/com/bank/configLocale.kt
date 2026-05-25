@@ -5,7 +5,7 @@ import com.swelms.common.locale.Locale
 
 
 fun configLocale() {
-   Locale.registerConfigs(regional_us, regional_ar, lang_en, lang_es )
+   Locale.register(regional_us, regional_ar, lang_en, lang_es )
    val lang = System.getenv("lang")
    Locale.lang = lang
    println("lang=${Locale.lang}")

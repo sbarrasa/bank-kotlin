@@ -1,9 +1,9 @@
-package com.bank.model.products
+package com.bank.domain.products
 
 import com.swelms.domain.id.card.CardNumber
 import kotlinx.datetime.LocalDate
 
-interface CardProduct : Product {
+sealed interface CardProduct : Product {
    val cardNumber: CardNumber
    val expirationDate: LocalDate
 

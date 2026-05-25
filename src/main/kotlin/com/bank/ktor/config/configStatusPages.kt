@@ -1,6 +1,6 @@
 package com.bank.ktor.config
 
-import com.bank.model.error.ErrorDetail
+import com.bank.domain.error.ErrorDetail
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.install

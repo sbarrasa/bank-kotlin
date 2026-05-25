@@ -1,4 +1,4 @@
-package com.bank.model.products
+package com.bank.domain.products
 
 import com.bank.locale.lang_en
 import com.bank.locale.lang_es
@@ -16,7 +16,7 @@ import kotlin.test.assertNotNull
 
 class ProductTest {
    init {
-      Locale.registerConfigs(lang_es, lang_en)
+      Locale.register(lang_es, lang_en)
       Locale.lang = "es"
    }
 
@@ -37,7 +37,7 @@ class ProductTest {
          "currency" to Currency.ARS,
          "creditLimit" to 1000.0
       )
-      val product = ProductDescriptor["CC"].type.createFromMap(map) as? CheckingAccount
+      val product = create(ProductDescriptor["CC"].type, map) as? CheckingAccount
       assertNotNull(product)
       assertEquals(Currency.ARS, product.currency)
       assertEquals(1000.0, product.creditLimit)

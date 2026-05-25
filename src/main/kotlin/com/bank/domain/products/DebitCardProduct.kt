@@ -1,4 +1,4 @@
-package com.bank.model.products
+package com.bank.domain.products
 
 import com.swelms.domain.id.card.CardNumber
 import kotlinx.datetime.LocalDate

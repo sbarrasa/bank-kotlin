@@ -1,4 +1,4 @@
-package com.bank.model.error
+package com.bank.domain.error
 
 import kotlinx.serialization.Serializable
 

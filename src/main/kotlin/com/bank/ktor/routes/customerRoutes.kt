@@ -1,8 +1,8 @@
 package com.bank.ktor.routes
 
 import com.bank.database.CustomerService
-import com.bank.model.customer.Customer
-import com.bank.model.customer.CustomerInfo
+import com.bank.domain.customer.Customer
+import com.bank.domain.customer.CustomerInfo
 import com.swelms.common.locale.localeText
 import io.ktor.server.application.*
 import io.ktor.server.plugins.BadRequestException
